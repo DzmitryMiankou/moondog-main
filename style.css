@@ -380,18 +380,20 @@ footer .footer__menu a {
   object-fit: cover;
   background-color: var(--blue-color);
   padding: 3%;
+  border-radius: 4em;
 }
 .video-text {
   background-color:#000000;
   z-index: 1;
   color: antiquewhite;
-  height: 110vh;
+  height: auto;
 }
 .video-text p {
-  padding-top: 3%;
+  padding: 3% 0 3% 0%;
   font-size: 1.2rem;
   width: 80%;
   margin: auto;
+  text-align: justify;
 }
 
 
