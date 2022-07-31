@@ -13,11 +13,12 @@
 
 body {
   display: grid;
-  grid-template-rows: auto auto auto 60px;
+  grid-template-rows: auto auto auto auto 60px;
   font-family: "Tahoma";
   overflow-x: hidden;
 }
 header {
+  z-index: 1;
   display: grid;
   background-color: var(--main-color);
   grid-template-rows: 3fr 60px;
@@ -93,6 +94,7 @@ header .header__logo svg {
   background-color: var(--main-color-light);
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 .biography__main {
   padding-top: 3%;
@@ -228,8 +230,7 @@ footer .footer__menu a {
 .reviews__item {
   min-width: 0;
   background: black;
-  z-index: 0;
-
+  z-index: 1;
 }
 
 .reviews__item::before {
@@ -357,12 +358,36 @@ footer .footer__menu a {
 
 
 
-.video {
+.video-wrapper {
   background-color:#000000;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
-
-
-
+.video {
+  z-index: 0;
+  position: relative;
+  min-height: 100vh;
+}
+.video-itam {
+  position: fixed;
+  top: 5%;
+  left: 22%;
+  width: auto;
+  height: 80%;
+  object-fit: cover;
+}
+.video-text {
+  background-color:#000000;
+  z-index: 1;
+  color: antiquewhite;
+  height: 110vh;
+}
+.video-text p {
+  font-size: 1.2rem;
+  width: 80%;
+  margin: auto;
+}
 
 
 /*Часть с анимацией css*/
