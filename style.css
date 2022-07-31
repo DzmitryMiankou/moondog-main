@@ -3,6 +3,7 @@
   --main-color: rgb(0, 0, 0); /* Переменная черного цвета */
   --main-color-light: #dcd4d1; /* Переменная бежевого цвета */
   --logo-color-white: white; /* Переменная белого цвета */
+  --blue-color: #6668ac; 
 }
 *,
 ::before,
@@ -94,7 +95,7 @@ header .header__logo svg {
   background-color: var(--main-color-light);
   display: flex;
   flex-direction: column;
-  z-index: 1;
+  z-index: 2;
 }
 .biography__main {
   padding-top: 3%;
@@ -359,7 +360,8 @@ footer .footer__menu a {
 
 
 .video-wrapper {
-  background-color:#000000;
+  
+  background-color: var(--main-color-light);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -367,15 +369,17 @@ footer .footer__menu a {
 .video {
   z-index: 0;
   position: relative;
-  min-height: 100vh;
+  aspect-ratio: 20/11;
 }
 .video-itam {
   position: fixed;
   top: 5%;
-  left: 22%;
+  left: 25%;
   width: auto;
-  height: 80%;
+  height: auto;
   object-fit: cover;
+  background-color: var(--blue-color);
+  padding: 3%;
 }
 .video-text {
   background-color:#000000;
@@ -384,6 +388,7 @@ footer .footer__menu a {
   height: 110vh;
 }
 .video-text p {
+  padding-top: 3%;
   font-size: 1.2rem;
   width: 80%;
   margin: auto;
@@ -425,7 +430,11 @@ footer .footer__menu a {
 
 /*Адаптив*/
 
-
+@media (max-width: 3000px) {
+  .video-itam {
+    max-width: 50%;
+  }
+}
 @media (max-width: 1200px) {
   .header__menu a {
     font-size: 1.7rem;
