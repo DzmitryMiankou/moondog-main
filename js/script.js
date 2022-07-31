@@ -91,3 +91,25 @@ $(document) .ready( () => {
 
   $(`.slider__item-tex`).css(`padding`,`8%`);
 });// окончание ready
+
+
+
+
+
+
+const promoVideo = document.querySelector(`#promoVideo`);
+promoVideo.volume = 1; 
+
+ window.addEventListener("click", (event) => {
+            let target = event.target;
+            switch(target.id) {
+                case "promoVideo":
+                  promoVideo.muted = false;
+                  promoVideo.id = `promoVideo2`
+                  break;
+                case "promoVideo2":
+                  promoVideo.muted = true;
+                  promoVideo.id = `promoVideo`
+                  break;
+            };
+        });
