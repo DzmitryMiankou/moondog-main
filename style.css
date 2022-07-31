@@ -330,7 +330,9 @@ footer .footer__menu a {
   border: none;
   background-color: #6668ac;
 }
-
+.reviews__item {
+  overflow: hidden;
+}
 .slider .slick-dots li.slick-active button {
   background-color: transparent;
   border: 3px solid #6668ac;
