@@ -102,15 +102,17 @@ const addSound = document.querySelector(`#addSound`);
 promoVideo.volume = 1; 
 
  window.addEventListener("click", (event) => {
-            let target = event.target;
-            switch(target.id) {
-                case "addSound":
-                  promoVideo.muted = false;
-                  addSound.id = `addSound2`
-                  break;
-                case "addSound2":
-                  promoVideo.muted = true;
-                  addSound.id = `addSound`
-                  break;
+    let target = event.target;
+    switch(target.id) {
+    case "addSound":
+      promoVideo.muted = false;
+      addSound.id = `addSound2`;
+      addSound.src = `icons/volumDel.svg`;
+      break;
+    case "addSound2":
+      promoVideo.muted = true;
+      addSound.id = `addSound`;
+      addSound.src = `icons/volumeAdd.svg`;
+      break;
             };
-        });
+});
