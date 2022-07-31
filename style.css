@@ -400,6 +400,19 @@ footer .footer__menu a {
     font-size: 1rem;
   }
 }
+@media (max-width:900px) {
+  footer {
+      height: 200px;
+      background: url("images/footer.backgr.min.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  
+    .footer__common,
+    .footer__main {
+      flex-flow: column;
+    }
+  }
 @media (max-width: 768px) {
   .information h2 {
     font-size: 3rem;
@@ -454,15 +467,5 @@ footer .footer__menu a {
   }
   .biography__text strong::after {
     display: none;
-  }
-  footer {
-    height: 200px;
-    background: url("images/footer.backgr.min.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  .footer__common,
-  .footer__main {
-    flex-flow: column;
   }
 }
