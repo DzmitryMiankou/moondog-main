@@ -360,23 +360,26 @@ footer .footer__menu a {
 
 
 .video-wrapper {
-  
   background-color: var(--main-color-light);
   position: relative;
   display: flex;
   flex-direction: column;
 }
+.rwe {
+  position:fixed;
+}
 .video {
   z-index: 0;
   position: relative;
-  aspect-ratio: 20/11;
+  height: 60vmax;
 }
+
 .video-itam {
   position: fixed;
   top: 5%;
   left: 25%;
   width: auto;
-  height: auto;
+  height: 40vmax;
   object-fit: cover;
   background-color: var(--blue-color);
   padding: 3%;
@@ -394,6 +397,13 @@ footer .footer__menu a {
   width: 80%;
   margin: auto;
   text-align: justify;
+}
+.tv-icon {
+  position: fixed;
+  object-fit: cover;
+  top: 38.9vmax;
+  left: 50vw;
+  width: 65px;
 }
 
 
@@ -434,10 +444,11 @@ footer .footer__menu a {
 
 @media (max-width: 3000px) {
   .video-itam {
-    max-width: 50%;
+    max-width: 50vw;
   }
 }
 @media (max-width: 1200px) {
+ 
   .header__menu a {
     font-size: 1.7rem;
   }

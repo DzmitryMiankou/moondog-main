@@ -98,18 +98,19 @@ $(document) .ready( () => {
 
 
 const promoVideo = document.querySelector(`#promoVideo`);
+const addSound = document.querySelector(`#addSound`);
 promoVideo.volume = 1; 
 
  window.addEventListener("click", (event) => {
             let target = event.target;
             switch(target.id) {
-                case "promoVideo":
+                case "addSound":
                   promoVideo.muted = false;
-                  promoVideo.id = `promoVideo2`
+                  addSound.id = `addSound2`
                   break;
-                case "promoVideo2":
+                case "addSound2":
                   promoVideo.muted = true;
-                  promoVideo.id = `promoVideo`
+                  addSound.id = `addSound`
                   break;
             };
         });
