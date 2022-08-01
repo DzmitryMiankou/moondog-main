@@ -365,7 +365,9 @@ footer .footer__menu a {
   background-color: var(--main-color-light);
   display: flex;
   flex-direction: column;
-  
+  background-image: url(images/bkTV.svg);
+  background-repeat: no-repeat;
+  background-size:contain;
 }
 .video {
   z-index: 0;
@@ -408,6 +410,10 @@ footer .footer__menu a {
   width: 65px;
 }
 
+#addSound2 {
+  transform: scaleY(-1);
+  width: 58px;
+}
 
 /*Часть с анимацией css*/
 

@@ -13,6 +13,10 @@
 <svg version="1.1" id="&#x421;&#x43B;&#x43E;&#x439;_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500"
 	 style="enable-background:new 0 0 500 500;" xml:space="preserve">
+	 <style type="text/css"> 
+	 <![CDATA[
+	 .blackcircle {fill:#DCD4D1; filter: drop-shadow(5px -8px 20px black);}
+	 ]]></style>
 <switch>
 	<foreignObject requiredExtensions="&ns_ai;" x="0" y="0" width="1" height="1">
 		<i:aipgfRef  xlink:href="#adobe_illustrator_pgf">
@@ -20,10 +24,10 @@
 	</foreignObject>
 	<g i:extraneous="self">
 		<g>
-			<circle style="fill:#3B3D5E;" cx="250" cy="234" r="151"/>
+			<circle  style="fill:#3B3D5E;" cx="250" cy="234" r="151"/>
 		</g>
 		<g>
-			<circle style="fill:#777DC6;" cx="250" cy="234" r="141"/>
+			<circle class="blackcircle" style="fill:#777DC6;" cx="250" cy="234" r="141"/>
 		</g>
 		<path style="fill:#3B3D5E;" d="M179.63,329.482l111,0.412l0.052-14h-0.004l0.472-142.098c6.649,2.258,15.181,3.63,24.488,3.661
 			c21.263,0.071,38.523-6.884,38.552-15.533s-17.185-15.718-38.448-15.789c-20.153-0.067-36.7,6.178-38.398,14.194l-0.15,0
