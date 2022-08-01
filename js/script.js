@@ -107,10 +107,13 @@ promoVideo.volume = 1;
     case "addSound":
       promoVideo.muted = false;
       addSound.id = `addSound2`;
+      addSound.style.cssText=`transform: rotate(180deg); 
+  `;
       break;
     case "addSound2":
       promoVideo.muted = true;
       addSound.id = `addSound`;
+      addSound.style.cssText=`transform: rotate(0deg)`;
       break;
     };
 });
@@ -118,4 +121,23 @@ promoVideo.volume = 1;
 
 const screenWidth = window.screen.width;
 const screenHeight = window.screen.height;
-console.log(screenHeight,screenWidth)
+console.log(screenHeight,screenWidth);
+
+
+
+
+
+
+/*Скорость скролла при нажатии на ссылку*/
+const smoothLinks = document.querySelectorAll('a[href^="#"]');
+for (let smoothLink of smoothLinks) {
+    smoothLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        const id = smoothLink.getAttribute('href');
+
+        document.querySelector(id).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+};

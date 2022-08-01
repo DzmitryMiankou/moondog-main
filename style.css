@@ -405,15 +405,27 @@ footer .footer__menu a {
 .tv-icon {
   position: fixed;
   object-fit: cover;
-  top: 38.9vmax;
+  top: 39vmax;
   left: 60vw;
-  width: 65px;
+  width: 65px;  
+  transition: width 0.3s, height 0.5s, background-color 0.5s, transform 1s;
+}
+.tv-icon:hover{
+  width: 61px;
+}
+#addSound2 {
+  top: 38.9vmax;
+  width: 61px;
+}
+#addSound2:hover {
+   width: 65px;
 }
 
-#addSound2 {
-  transform: scaleY(-1);
-  width: 58px;
-}
+
+
+
+
+
 
 /*Часть с анимацией css*/
 
