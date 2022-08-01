@@ -420,9 +420,6 @@ footer .footer__menu a {
 #addSound2:hover {
    width: 65px;
 }
-.video-text {
-  background-color: #000000;
-}
 .video-text h3 {
   text-transform: uppercase;
   font-size: 20vh;
@@ -430,6 +427,8 @@ footer .footer__menu a {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   background-image: url(images/bctext.svg);
+  background-repeat:no-repeat;
+  background-size:cover;
 }
 
 
@@ -562,5 +561,13 @@ footer .footer__menu a {
   }
   .biography__text strong::after {
     display: none;
+  }
+  .video-text h3 {
+    font-size: 15vh;
+  }
+}
+@media (max-width:550px) {
+  .video-text h3 {
+    font-size: 10vh;
   }
 }
