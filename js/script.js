@@ -107,8 +107,7 @@ promoVideo.volume = 1;
     case "addSound":
       promoVideo.muted = false;
       addSound.id = `addSound2`;
-      addSound.style.cssText=`transform: rotate(180deg); 
-  `;
+      addSound.style.cssText=`transform: rotate(180deg);`
       break;
     case "addSound2":
       promoVideo.muted = true;
