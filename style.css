@@ -420,9 +420,17 @@ footer .footer__menu a {
 #addSound2:hover {
    width: 65px;
 }
-
-
-
+.video-text {
+  background-color: #000000;
+}
+.video-text h3 {
+  text-transform: uppercase;
+  font-size: 20vh;
+  text-align: center;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: url(images/bctext.svg);
+}
 
 
 
