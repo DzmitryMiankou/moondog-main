@@ -96,7 +96,7 @@ $(document) .ready( () => {
 
 
 
-
+window.onload = function() {
 const promoVideo = document.querySelector(`#promoVideo`);
 const addSound = document.querySelector(`#addSound`);
 promoVideo.volume = 1; 
@@ -114,6 +114,7 @@ promoVideo.volume = 1;
       break;
     };
 });
+};
 
 const screenWidth = window.screen.width;
 const screenHeight = window.screen.height;
