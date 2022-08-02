@@ -406,7 +406,7 @@ footer .footer__menu a {
   position: fixed;
   object-fit: cover;
   top: 39vmax;
-  left: 55vw;
+  left: 45vw;
   width: 65px;  
   transition: width 0.3s, height 0.5s, background-color 0.5s, transform 1s;
 }
@@ -417,6 +417,18 @@ footer .footer__menu a {
   left: 63vw;
   width: 65px;
   transition: width 0.3s, height 0.5s, background-color 0.5s, transform 1s;
+}
+.tv-invert {
+  position: fixed;
+  object-fit: cover;
+  top: 38.7vmax;
+  left: 54vw;
+  width: 65px;
+  transform: rotate(180deg);
+  transition: width 0.3s, height 0.5s, background-color 0.5s, transform 1s;
+}
+.tv-invert:hover {
+  width: 61px;
 }
 .tv-next:hover {
   width: 61px;

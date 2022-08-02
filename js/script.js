@@ -99,7 +99,13 @@ $(document) .ready( () => {
 window.onload = function() {
 const promoVideo = document.querySelector(`#promoVideo`);
 const addSound = document.querySelector(`#addSound`);
-promoVideo.volume = 1; 
+const next = document.querySelector(`#nextSound`);
+const nextInvert = document.querySelector(`#nextInvert`);
+const photo = document.querySelector(`#tvPhotp`);
+
+
+photo.style.cssText=`display:none;`;
+promoVideo.volume = 0.5; 
 
  window.addEventListener("click", (event) => {
     const target = event.target;
@@ -113,6 +119,17 @@ promoVideo.volume = 1;
       promoVideo.muted = true;
       addSound.id = `addSound`;
       addSound.style.cssText=`transform: rotate(0deg)`;
+      break;
+    case "nextSound":
+      photo.style.cssText=`width: 800px; `;
+      promoVideo.style.cssText=`display:none;`;
+      promoVideo.muted = true; 
+      addSound.style.cssText=`transform: rotate(0deg);`
+      break;
+    case "nextInvert":
+      photo.style.cssText=`display:none; `;
+      promoVideo.style.cssText=``;
+      promoVideo.muted = true; 
       break;
     };
 });

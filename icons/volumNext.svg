@@ -13,6 +13,10 @@
 <svg version="1.1" id="&#x421;&#x43B;&#x43E;&#x439;_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500"
 	 style="enable-background:new 0 0 500 500;" xml:space="preserve">
+	 <style type="text/css"> 
+	 <![CDATA[
+	 .blackcircle {fill:#DCD4D1; filter: drop-shadow(5px -8px 20px black);}
+	 ]]></style>
 <switch>
 	<foreignObject requiredExtensions="&ns_ai;" x="0" y="0" width="1" height="1">
 		<i:aipgfRef  xlink:href="#adobe_illustrator_pgf">
@@ -23,7 +27,7 @@
 			<circle style="fill:#3B3D5E;" cx="250" cy="234" r="151"/>
 		</g>
 		<g>
-			<circle style="fill:#777DC6;" cx="250" cy="234" r="141"/>
+			<circle class="blackcircle" style="fill:#777DC6;" cx="250" cy="234" r="141"/>
 		</g>
 		<polygon style="fill:#3B3D5E;" points="370,233.895 280.72,191 280.72,210.803 141,210.803 141,256.986 280.72,256.986 
 			280.72,276.789 		"/>
