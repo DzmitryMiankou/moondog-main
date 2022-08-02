@@ -458,7 +458,11 @@ footer .footer__menu a {
   z-index: 1;
 }
 
-
+.ds3 img {
+ max-width: 100%;
+ width: auto;
+ height: auto;
+}
 /*Часть с анимацией css*/
 
 @keyframes morph {
