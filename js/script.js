@@ -1,4 +1,4 @@
-"use strict"
+`use strict`
 
 
 const footerButtons = document.querySelector(`.footer__main`);
@@ -93,53 +93,83 @@ $(document) .ready( () => {
 });// окончание ready
 
 
+/*_______________TV___TV____TV____TV____________________________________ */
 
-
-
-window.onload = function() {
 const promoVideo = document.querySelector(`#promoVideo`);
 const addSound = document.querySelector(`#addSound`);
 const next = document.querySelector(`#nextSound`);
 const nextInvert = document.querySelector(`#nextInvert`);
 const photo = document.querySelector(`#tvPhotp`);
-
-
 photo.style.cssText=`display:none;`;
 promoVideo.volume = 0.5; 
 
- window.addEventListener("click", (event) => {
-    const target = event.target;
-    switch(target.id) {
-    case "addSound":
-      promoVideo.muted = false;
-      addSound.id = `addSound2`;
-      addSound.style.cssText=`transform: rotate(180deg);`
-      break;
-    case "addSound2":
-      promoVideo.muted = true;
-      addSound.id = `addSound`;
-      addSound.style.cssText=`transform: rotate(0deg)`;
-      break;
-    case "nextSound":
-      photo.style.cssText=`width: 800px; `;
-      promoVideo.style.cssText=`display:none;`;
-      promoVideo.muted = true; 
-      addSound.style.cssText=`transform: rotate(0deg);`
-      break;
-    case "nextInvert":
-      photo.style.cssText=`display:none; `;
-      promoVideo.style.cssText=``;
-      promoVideo.muted = true; 
-      break;
-    };
-});
+
+window.onload = function() {
+  
+
+  const tv = new Tvpresentatin();
+    tv.chekInput();
 };
+
+
+
+class Tvpresentatin {
+  constructor() {
+    
+  }
+  chekInput() {
+    window.addEventListener("click", (event) => {
+      const target = event.target;
+      switch(target.id) {
+        case "addSound":
+          this.mutedFalse(promoVideo);
+          break;
+        case "addSound2":
+          this.mutedTrue(promoVideo);
+          break;
+        case "nextSound":
+          this.mutedFalse(promoVideo);
+          photo.style.cssText=`width: 800px; `;
+          promoVideo.style.cssText=`display:none;`;
+          this.playVideo(promoVideo);
+          addSound.style.cssText=`transform: rotate(0deg);`
+          break;
+        case "nextInvert":
+          promoVideo.style.cssText=``;
+          this.mutedFalse(promoVideo);
+          this.playVideo(promoVideo);
+          photo.style.cssText=`display:none; `;
+          break;
+      };
+    });
+  }
+  mutedFalse(a) {
+    a.muted = false;
+    addSound.id = `addSound2`;
+    addSound.style.cssText=`transform: rotate(180deg);`;
+  }
+  mutedTrue(a) {
+    a.muted = true;
+    addSound.id = `addSound`;
+    addSound.style.cssText=`transform: rotate(0deg)`;
+  }
+  playVideo(video) {
+    if(video.style.display == `none`) {
+      video.pause();
+      video.currentTime = 0;
+    }
+    else {
+      video.play();
+    }
+  }
+};
+
 
 const screenWidth = window.screen.width;
 const screenHeight = window.screen.height;
 console.log(screenHeight,screenWidth);
 
-
+/*_______________TV___TV____TV____TV____________________________________ */
 
 
 
