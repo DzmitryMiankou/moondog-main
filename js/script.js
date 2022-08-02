@@ -93,6 +93,15 @@ $(document) .ready( () => {
 });// окончание ready
 
 
+
+
+
+
+
+
+
+
+
 /*_______________TV___TV____TV____TV____________________________________ */
 
 const promoVideo = document.querySelector(`#promoVideo`);
@@ -100,8 +109,12 @@ const addSound = document.querySelector(`#addSound`);
 const next = document.querySelector(`#nextSound`);
 const nextInvert = document.querySelector(`#nextInvert`);
 const photo = document.querySelector(`#tvPhotp`);
+
+
+
 photo.style.cssText=`display:none;`;
 promoVideo.volume = 0.5; 
+
 
 
 window.onload = function() {
@@ -165,9 +178,36 @@ class Tvpresentatin {
 };
 
 
-const screenWidth = window.screen.width;
-const screenHeight = window.screen.height;
-console.log(screenHeight,screenWidth);
+
+
+
+
+
+
+const bottomObj = document.querySelector(`.video-text`);
+const topObj = document.querySelector(`.information__life`);
+
+
+window.addEventListener("scroll", (event) => {
+  const bottRect = bottomObj.getBoundingClientRect();
+  const topRect = topObj.getBoundingClientRect();
+  
+  console.log(topRect);
+
+  if(bottRect.top < 1 || topRect.top > 0) {
+    promoVideo.style.display = `none`;
+    promoVideo.pause();
+  }
+  else {
+    promoVideo.play();
+    promoVideo.style.display = ``;
+  };
+});
+
+
+
+
+
 
 /*_______________TV___TV____TV____TV____________________________________ */
 

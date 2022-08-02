@@ -447,7 +447,7 @@ footer .footer__menu a {
   text-transform: uppercase;
   font-size: 20vh;
   text-align: center;
-  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-image: url(images/bctext.svg);
   background-repeat:no-repeat;
