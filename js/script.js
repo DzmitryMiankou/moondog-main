@@ -104,23 +104,22 @@ $(document) .ready( () => {
 
 /*_______________TV___TV____TV____TV____________________________________ */
 
-const promoVideo = document.querySelector(`#promoVideo`);
 const addSound = document.querySelector(`#addSound`);
 const next = document.querySelector(`#nextSound`);
 const nextInvert = document.querySelector(`#nextInvert`);
-const photo = document.querySelector(`#tvPhotp`);
 const bottomObj = document.querySelector(`.video-text`);
 const topObj = document.querySelector(`.information__life`);
 
+const content = document.querySelectorAll(`.video-itam`);// Массив медиафайлов
 
 
-photo.style.cssText=`display:none;`;
-promoVideo.volume = 0.5; 
 
+content[1].style.cssText=`display:none;`;
+console.log(content.length);
 
 
 window.onload = function() {
-  const tv = new Tvpresentatin();
+  const tv = new Tvpresentatin(content);
   tv.clickInput();
   tv.scrollTv();
 };
@@ -128,8 +127,10 @@ window.onload = function() {
 
 
 class Tvpresentatin {
-  constructor() {
-    
+  constructor(content) {
+    this.content = content;
+    this.video = content[0];
+    this.img = content[1];
   }
   scrollTv() {
     window.addEventListener("scroll", (event) => {
@@ -143,28 +144,29 @@ class Tvpresentatin {
       const target = event.target;
       switch(target.id) {
         case "addSound":
-          this.mutedFalse(promoVideo);
+          this.mutedFalse(this.video);
           break;
         case "addSound2":
-          this.mutedTrue(promoVideo);
+          this.mutedTrue(this.video);
           break;
         case "nextSound":
-          this.mutedFalse(promoVideo);
-          photo.style.cssText=`width: 800px; `;
-          promoVideo.style.cssText=`display:none;`;
-          this.playVideo(promoVideo);
+          this.mutedFalse(this.video);
+          this.img.style.cssText=`width: 800px; `;
+          this.video.style.cssText=`display:none;`;
+          this.playVideo(this.video);
           addSound.style.cssText=`transform: rotate(0deg);`
           break;
         case "nextInvert":
-          promoVideo.style.cssText=``;
-          this.mutedFalse(promoVideo);
-          this.playVideo(promoVideo);
-          photo.style.cssText=`display:none; `;
+          this.video.style.cssText=``;
+          this.mutedFalse(this.video);
+          this.playVideo(this.video);
+          this.img.style.cssText=`display:none; `;
           break;
       };
     });
   }
   mutedFalse(a) {
+    this.video.volume = 0.5;
     a.muted = false;
     addSound.id = `addSound2`;
     addSound.style.cssText=`transform: rotate(180deg);`;
@@ -174,21 +176,21 @@ class Tvpresentatin {
     addSound.id = `addSound`;
     addSound.style.cssText=`transform: rotate(0deg)`;
   }
-  playVideo(video) {
-    if(video.style.display == `none`) {
-      video.pause();
-      video.currentTime = 0;
+  playVideo() {
+    if(this.video.style.display == `none`) {
+      this.video.pause();
+      this.video.currentTime = 0;
     }
     else {
-      video.play();
+      this.video.play();
     }
   }
   scrollStop(bottRect, topRect) {
-    if(bottRect.top < 1 || topRect.top > 0 || promoVideo.style.display == `none`) {
-      promoVideo.pause();
+    if(bottRect.top < 1 || topRect.top > 0 || this.video.style.display == `none`) {
+      this.video.pause();
     }
     else {
-      promoVideo.play();
+      this.video.play();
     };
   }
 };
