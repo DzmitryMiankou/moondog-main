@@ -194,24 +194,25 @@ class Tvpresentatin {
     addSound.style.cssText=`transform: rotate(0deg);`;
     let cauntP = this.zero++;   
     console.log(cauntP); 
-    if(cauntP > this.content.length-1 || cauntP < 1) {
+    if(cauntP > this.content.length-1) {
+      this.zero = 1;
       this.content.forEach(element => element.style.cssText=`display: none;`);
       this.content[0].style.cssText=``;
-      this.zero = 1;
+      
       return;
     } else {
     this.content.forEach(element => element.style.cssText=`display: none;`);
     this.content[cauntP].style.cssText=``;
     };
-    c = cauntP;
+    c = cauntP-1;
   }
   nextLeft() {
     let z = c--;
     console.log(z);
     if(z == 0 || z < 0) {
+      c = this.lengthContent-1;
       this.content.forEach(element => element.style.cssText=`display: none;`);
       this.content[0].style.cssText=``;
-      c = this.lengthContent-1;
       return;
     } else {
       this.content.forEach(element => element.style.cssText=`display: none;`);
