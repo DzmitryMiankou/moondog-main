@@ -151,19 +151,17 @@ class Tvpresentatin {
           break;
         case "nextSound":
           this.nextRight();
-          this.mutedFalse(this.video);
           this.playVideo(this.video);
           break;
         case "nextInvert":
           this.nextLeft();
-          this.mutedFalse(this.video);
           this.playVideo(this.video);
           break;
       };
     });
   }
   mutedFalse(a) {
-    this.video.volume = 0.5;
+    this.video.volume = 0.2;
     a.muted = false;
     addSound.id = `addSound2`;
     addSound.style.cssText=`transform: rotate(180deg);`;
@@ -188,10 +186,10 @@ class Tvpresentatin {
     }
     else {
       this.video.play();
+      
     };
   }
   nextRight() {
-    addSound.style.cssText=`transform: rotate(0deg);`;
     let cauntP = this.zero++;   
     console.log(cauntP); 
     if(cauntP > this.content.length-1) {
@@ -209,7 +207,7 @@ class Tvpresentatin {
   nextLeft() {
     let z = c--;
     console.log(z);
-    if(z == 0 || z < 0) {
+    if(z === 0 || z < 0 || this.content[0].style.display == ``) {
       c = this.lengthContent-1;
       this.content.forEach(element => element.style.cssText=`display: none;`);
       this.content[0].style.cssText=``;
