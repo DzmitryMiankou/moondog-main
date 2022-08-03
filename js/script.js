@@ -104,6 +104,8 @@ $(document) .ready( () => {
 
 /*_______________TV___TV____TV____TV____________________________________ */
 
+
+
 const addSound = document.querySelector(`#addSound`);
 const next = document.querySelector(`#nextSound`);
 const nextInvert = document.querySelector(`#nextInvert`);
@@ -113,10 +115,12 @@ const topObj = document.querySelector(`.information__life`);
 const content = document.querySelectorAll(`.video-itam`);// Массив медиафайлов
 
 
-let k = content.forEach(element => element.style.cssText=`display:none;`);
-content[0].style.cssText=``;
+content.forEach(element => element.style.cssText=`display:none;`);
+
 
 window.onload = function() {
+  content[0].style.cssText=``;
+
   const tv = new Tvpresentatin(content);
   tv.clickInput();
   tv.scrollTv();
@@ -128,7 +132,6 @@ class Tvpresentatin {
   constructor(content) {
     this.content = content;
     this.video = content[0];
-    this.img = content[1];
     this.zero = 1;
     this.lengthContent = content.length;
   }
@@ -186,7 +189,6 @@ class Tvpresentatin {
     }
     else {
       this.video.play();
-      
     };
   }
   nextRight() {
@@ -205,17 +207,17 @@ class Tvpresentatin {
     c = cauntP-1;
   }
   nextLeft() {
-    let z = c--;
-    console.log(z);
-    if(z === 0 || z < 0 || this.content[0].style.display == ``) {
+    let cauntM = c--;
+    if(cauntM === 0 || cauntM < 0 || this.content[0].style.display == ``) {
       c = this.lengthContent-1;
       this.content.forEach(element => element.style.cssText=`display: none;`);
       this.content[0].style.cssText=``;
       return;
     } else {
       this.content.forEach(element => element.style.cssText=`display: none;`);
-      this.content[z].style.cssText=``;
+      this.content[cauntM].style.cssText=``;
     };
+    c = cauntM - 1;
   }
 };
 
