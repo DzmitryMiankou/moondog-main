@@ -375,6 +375,7 @@ footer .footer__menu a {
   height: 60vmax;
   
 }
+.video__content img {width: 800px}
 
 .video-itam {
   position: fixed;

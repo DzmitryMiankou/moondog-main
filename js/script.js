@@ -113,10 +113,8 @@ const topObj = document.querySelector(`.information__life`);
 const content = document.querySelectorAll(`.video-itam`);// Массив медиафайлов
 
 
-
-content[1].style.cssText=`display:none;`;
-console.log(content.length);
-
+let k = content.forEach(element => element.style.cssText=`display:none;`);
+content[0].style.cssText=``;
 
 window.onload = function() {
   const tv = new Tvpresentatin(content);
@@ -124,13 +122,15 @@ window.onload = function() {
   tv.scrollTv();
 };
 
-
+let c;
 
 class Tvpresentatin {
   constructor(content) {
     this.content = content;
     this.video = content[0];
     this.img = content[1];
+    this.zero = 1;
+    this.lengthContent = content.length;
   }
   scrollTv() {
     window.addEventListener("scroll", (event) => {
@@ -150,17 +150,14 @@ class Tvpresentatin {
           this.mutedTrue(this.video);
           break;
         case "nextSound":
+          this.nextRight();
           this.mutedFalse(this.video);
-          this.img.style.cssText=`width: 800px; `;
-          this.video.style.cssText=`display:none;`;
           this.playVideo(this.video);
-          addSound.style.cssText=`transform: rotate(0deg);`
           break;
         case "nextInvert":
-          this.video.style.cssText=``;
+          this.nextLeft();
           this.mutedFalse(this.video);
           this.playVideo(this.video);
-          this.img.style.cssText=`display:none; `;
           break;
       };
     });
@@ -191,6 +188,34 @@ class Tvpresentatin {
     }
     else {
       this.video.play();
+    };
+  }
+  nextRight() {
+    addSound.style.cssText=`transform: rotate(0deg);`;
+    let cauntP = this.zero++;   
+    console.log(cauntP); 
+    if(cauntP > this.content.length-1 || cauntP < 1) {
+      this.content.forEach(element => element.style.cssText=`display: none;`);
+      this.content[0].style.cssText=``;
+      this.zero = 1;
+      return;
+    } else {
+    this.content.forEach(element => element.style.cssText=`display: none;`);
+    this.content[cauntP].style.cssText=``;
+    };
+    c = cauntP;
+  }
+  nextLeft() {
+    let z = c--;
+    console.log(z);
+    if(z == 0 || z < 0) {
+      this.content.forEach(element => element.style.cssText=`display: none;`);
+      this.content[0].style.cssText=``;
+      c = this.lengthContent-1;
+      return;
+    } else {
+      this.content.forEach(element => element.style.cssText=`display: none;`);
+      this.content[z].style.cssText=``;
     };
   }
 };
