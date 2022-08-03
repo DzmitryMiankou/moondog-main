@@ -109,6 +109,8 @@ const addSound = document.querySelector(`#addSound`);
 const next = document.querySelector(`#nextSound`);
 const nextInvert = document.querySelector(`#nextInvert`);
 const photo = document.querySelector(`#tvPhotp`);
+const bottomObj = document.querySelector(`.video-text`);
+const topObj = document.querySelector(`.information__life`);
 
 
 
@@ -118,10 +120,9 @@ promoVideo.volume = 0.5;
 
 
 window.onload = function() {
-  
-
   const tv = new Tvpresentatin();
-    tv.chekInput();
+  tv.clickInput();
+  tv.scrollTv();
 };
 
 
@@ -130,7 +131,14 @@ class Tvpresentatin {
   constructor() {
     
   }
-  chekInput() {
+  scrollTv() {
+    window.addEventListener("scroll", (event) => {
+    const bottRect = bottomObj.getBoundingClientRect();
+    const topRect = topObj.getBoundingClientRect();
+    this.scrollStop(bottRect, topRect);
+    });
+  }
+  clickInput() {
     window.addEventListener("click", (event) => {
       const target = event.target;
       switch(target.id) {
@@ -175,35 +183,15 @@ class Tvpresentatin {
       video.play();
     }
   }
-};
-
-
-
-
-
-
-
-
-const bottomObj = document.querySelector(`.video-text`);
-const topObj = document.querySelector(`.information__life`);
-
-
-window.addEventListener("scroll", (event) => {
-  const bottRect = bottomObj.getBoundingClientRect();
-  const topRect = topObj.getBoundingClientRect();
-  
-  console.log(topRect);
-
-  if(bottRect.top < 1 || topRect.top > 0) {
-    promoVideo.style.display = `none`;
-    promoVideo.pause();
+  scrollStop(bottRect, topRect) {
+    if(bottRect.top < 1 || topRect.top > 0 || promoVideo.style.display == `none`) {
+      promoVideo.pause();
+    }
+    else {
+      promoVideo.play();
+    };
   }
-  else {
-    promoVideo.play();
-    promoVideo.style.display = ``;
-  };
-});
-
+};
 
 
 
