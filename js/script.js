@@ -243,11 +243,111 @@ for (let smoothLink of smoothLinks) {
 };
 
 
+/*
+
+const windowInnerWidth = document.documentElement.clientWidth; // Ширина канваса от ширины окна без элем.браузера
+const windowInnerHeight = document.documentElement.clientHeight; // Высота канваса от ширины окна без элем.браузера
+*/
+const canvas = document.getElementsByTagName("canvas")[0];
+let ctx = canvas.getContext('2d');
 
 
-let n_x,n_y;
-		
-		const canvas = document.querySelector(`#canvas`);
-		const ctx = canvas.getContext('2d');
-		
-		const img = document.getElementById("myImg");
+const innerX = canvas.width = document.documentElement.clientWidth;
+const innerY = canvas.height = document.documentElement.clientHeight;
+
+
+window.addEventListener('resize', () => {
+	canvas.width = document.documentElement.clientWidth;
+	canvas.height = document.documentElement.clientHeight;
+  init();
+});
+
+
+ctx.beginPath();
+ctx.fillStyle = `#6668ac`;
+ctx.arc(innerX/2, 150, innerX/25, 0, 2 * Math.PI, true);
+ctx.fill();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+img.onload = function() {
+  canvas.height = this.height;
+  canvas.width = this.width;
+  document.querySelector(`.canva`).style.height = canvas.height + `px`;
+  document.querySelector(`.canva`).style.width = canvas.width +`px`;
+  let pat = new Image();
+  pat.onload = function () {
+    ctx.fillStyle = ctx.createPattern(this, "repeat");
+    ctx.fillRect(10, 0, canvas.width, canvas.height );
+  }
+  pat.src = "images/d.jpg";
+  
+};
+
+
+let drawStarted = false;
+
+canvas.addEventListener("mousedown", beginDraw);
+canvas.addEventListener("mouseup", endDraw);
+canvas.addEventListener("mouseout", endDraw);
+canvas.addEventListener("mousemove", draw);
+
+
+function beginDraw(ev) {
+        ctx.beginPath();
+        n_x = ev.offsetX;
+        n_y = ev.offsetY;
+        ctx.moveTo(n_x, n_y);
+        drawStarted = true;
+      }
+
+      // Эта функция вызывается каждый раз, когда вы перемещаете мышь.
+      // Но рисование происходит только когда вы удерживаете кнопку мыши
+      // нажатой.
+      function draw(ev) {
+        if (drawStarted) {
+          console.log(n_x + " " + n_y + " " + (n_x + 5) + " " + (n_y + 5));
+          //делаем пиксели прозрачными
+          
+          ctx.arc(n_x, n_y, 50, 0, 2 * Math.PI, false);
+          ctx.stroke();
+
+          
+          ctx.clearRect(n_x, n_y, 80, 150);
+          ctx.moveTo(ev._x, ev._y);
+          n_x = ev.offsetX;
+          n_y = ev.offsetY;
+        }
+      }
+
+      // Событие при отпускании мыши
+      function endDraw(ev) {
+        if (drawStarted) {
+          draw(ev);
+          drawStarted = false;
+        }
+      }
+
+*/
