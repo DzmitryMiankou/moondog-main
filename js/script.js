@@ -192,32 +192,30 @@ class Tvpresentatin {
     };
   }
   nextRight() {
-    let cauntP = this.zero++;   
-    console.log(cauntP); 
+    let cauntP = this.zero++;    
     if(cauntP > this.content.length-1) {
       this.zero = 1;
-      this.content.forEach(element => element.style.cssText=`display: none;`);
-      this.content[0].style.cssText=``;
-      
+      this.styleCSS(0);
       return;
     } else {
-    this.content.forEach(element => element.style.cssText=`display: none;`);
-    this.content[cauntP].style.cssText=``;
+    this.styleCSS(cauntP);
     };
     c = cauntP-1;
   }
   nextLeft() {
     let cauntM = c--;
-    if(cauntM === 0 || cauntM < 0 || this.content[0].style.display == ``) {
+    if(cauntM === 0 || cauntM < 0 || this.video.style.display == ``) {
       c = this.lengthContent-1;
-      this.content.forEach(element => element.style.cssText=`display: none;`);
-      this.content[0].style.cssText=``;
+      this.styleCSS(0);
       return;
     } else {
-      this.content.forEach(element => element.style.cssText=`display: none;`);
-      this.content[cauntM].style.cssText=``;
+      this.styleCSS(cauntM);
     };
     c = cauntM - 1;
+  }
+  styleCSS(numb) {
+    this.content.forEach(element => element.style.cssText=`display: none;`);
+    this.content[numb].style.cssText=``;
   }
 };
 
@@ -243,3 +241,13 @@ for (let smoothLink of smoothLinks) {
         });
     });
 };
+
+
+
+
+let n_x,n_y;
+		
+		const canvas = document.querySelector(`#canvas`);
+		const ctx = canvas.getContext('2d');
+		
+		const img = document.getElementById("myImg");

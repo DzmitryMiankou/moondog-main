@@ -456,17 +456,14 @@ footer .footer__menu a {
   background-repeat:no-repeat;
   background-size:cover;
 }
-
-.ds3 {
-  z-index: 1;
-}
-
-.ds3 img {
- max-width: 100%;
- width: auto;
- height: auto;
-}
 /*Часть с анимацией css*/
+
+
+
+
+#myImg {
+  position: absolute;
+}
 
 @keyframes morph {
   0% {
