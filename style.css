@@ -601,7 +601,36 @@ footer .footer__menu a {
   }
 }
 
+
+
+
+
 .canva {
+  position: relative;
   background-color: rgb(0, 0, 0);
   z-index: 1;
+  height: 800px;
 }
+.canva__earth {
+  position: absolute;
+  content: "";
+  width: 100vw;
+  height: 8vmax;
+  background: linear-gradient(180deg, var(--blue-color) 0%, rgba(0, 0, 0, 1) 37%);
+  z-index: 5;
+  border-radius: 44% 56% 53% 47% / 75% 76% 24% 25%;
+  top: 750px;
+  z-index: 1;
+}
+.canva__earth2 {
+  position: absolute;
+  content: "";
+  width: 50vw;
+  height: 8vmax;
+  background: linear-gradient(180deg, #41436f 0%, rgba(0, 0, 0, 1) 22%);
+  z-index: 5;
+  border-radius: 35% 65% 52% 48% / 74% 46% 54% 26%;
+ top:730px;
+ z-index: 0;
+}
+

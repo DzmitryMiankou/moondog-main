@@ -252,15 +252,17 @@ const windowInnerHeight = document.documentElement.clientHeight; // Высота
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 
-const h = canvas.height = innerHeight;
+const h = canvas.height = 800;
 const w = canvas.width = innerWidth;
+
+
 
 const particles = [];
 
 
 const properties = { // свойства объектов
   bgColor: `rgba(0, 0, 0, 0.08)`,
-  particlesColor: `#6668ac`,
+  particlesColor: `#dcd4d1`,
   particlesRadius: 2,
   particlesCount: 20,
   particlesMaxV: 0.2,
@@ -333,6 +335,7 @@ class Particles {
 function reDrawBackgraund() { // Заливка фона
   context.fillStyle = properties.bgColor;
   context.fillRect(0, 0, w, h);
+  
 }
 
 function reDrawParticles() {
@@ -364,6 +367,13 @@ init();
 
 
 
+
+/*<img
+        id="earth"
+        class="canva__earth"
+        src="images/canvasComoposition/earth.svg"
+        alt="svg"
+      />*/
 
 /*
 const canvas = document.getElementsByTagName("canvas")[0];
