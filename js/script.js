@@ -294,14 +294,17 @@ function draw() {
   ball.x += ball.vx;
   ball.y += ball.vy;
 
-  if (ball.y + ball.vy > canvas.height || ball.y + ball.vy < 0) {
+  if (ball.y + ball.vy > canvas.height+30 || ball.y + ball.vy < 0) {
     ball.vy = -ball.vy;
   }
-  if (ball.x + ball.vx > canvas.width || ball.x + ball.vx < 0) {
+  if (ball.x + ball.vx > canvas.width+30 || ball.x + ball.vx < 0) {
     ball.vx = -ball.vx;
   }
+  if ((ball.y) < canvas.height) ball.vy += 0.00144;
+  ball.dx = ball.vx * 0.0698;
 
   raf = window.requestAnimationFrame(draw);
+  
 }
 
 
