@@ -250,69 +250,78 @@ const windowInnerHeight = document.documentElement.clientHeight; // Высота
 */
 
 const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-let raf;
+const context = canvas.getContext('2d');
 
+const h = canvas.height = innerHeight;
+const w = canvas.width = innerWidth;
 
-const innerX = canvas.width = document.documentElement.clientWidth;
-const innerY = canvas.height = document.documentElement.clientHeight;
+const particles = [];
+
+const properties = { // свойства объектов
+  bgColor: `rgba(0, 0, 0, 0.09)`,
+  particlesColor: `#6668ac`,
+  particlesRadius: 3,
+  particlesCount: 60,
+  particlesMaxV: 0.5,
+};
 
 window.addEventListener('resize', () => {
-	canvas.width = innerX;
-	canvas.height = innerY;
-  
+	canvas.width = w;
+	canvas.height = h;
 });
 
-
-
-
-const ball = {
-  x: 0,
-  y: 0,
-  vx: 2,
-  vy: 1,
-  radius: 10,
-  color: '#6668ac',
-  draw: function() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
-    ctx.closePath();
-    ctx.fillStyle = this.color;
-    ctx.fill();
+class Particles {
+  constructor(){
+    this.x = Math.random()*w;
+    this.y = Math.random()*h;
+    this.vX = Math.random()*(properties.particlesMaxV*2)-properties.particlesMaxV;
+    this.vY = Math.random()*(properties.particlesMaxV*2)-properties.particlesMaxV;
+  }
+  position() {
+    this.x + this.vX > w && this.vX > 0 || this.x + this.vX < 0 && this.x < 0? this.vX*=-1: this.vX;
+    this.y + this.vY > h && this.vY > 0 || this.y + this.vY < 0 && this.y < 0? this.vY*=-1: this.vY;
+    this.x += this.vX;
+    this.y += this.vY;
+  }
+  reDraw() {
+    context.beginPath();
+    context.arc(this.x, this.y, properties.particlesRadius, 0, Math.PI*2 );
+    context.closePath;
+    context.fillStyle = properties.particlesColor;
+    context.fill();
   }
 };
 
-
-function clear() {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
-  ctx.fillRect(0,0,canvas.width,canvas.height);
+function reDrawBackgraund() { // Заливка фона
+  context.fillStyle = properties.bgColor;
+  context.fillRect(0, 0, w, h)
 }
 
-function draw() {
-  clear();
-  ball.draw();
-  ball.x += ball.vx;
-  ball.y += ball.vy;
-
-  if (ball.y + ball.vy > canvas.height+30 || ball.y + ball.vy < 0) {
-    ball.vy = -ball.vy;
+function reDrawParticles() {
+  for(let i in particles){
+    particles[i].position();
+    particles[i].reDraw();
   }
-  if (ball.x + ball.vx > canvas.width+30 || ball.x + ball.vx < 0) {
-    ball.vx = -ball.vx;
-  }
-  if ((ball.y) < canvas.height) ball.vy += 0.00144;
-  ball.dx = ball.vx * 0.0698;
+}
 
-  raf = window.requestAnimationFrame(draw);
-  
+function loop() { //самовызывание анимации поаторр
+  reDrawBackgraund();
+  reDrawParticles();
+  requestAnimationFrame(loop);
 }
 
 
+function init() { //инициация программы
+  for(let i = 0; i < properties.particlesCount; i++) {
+    particles.push(new Particles);
+  }
+  loop();
+};
 
-window.requestAnimationFrame(draw);
+
+init();
 
 
-ball.draw();
 
 
 
