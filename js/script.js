@@ -257,12 +257,14 @@ const w = canvas.width = innerWidth;
 
 const particles = [];
 
+
 const properties = { // свойства объектов
-  bgColor: `rgba(0, 0, 0, 0.09)`,
+  bgColor: `rgba(0, 0, 0, 0.08)`,
   particlesColor: `#6668ac`,
-  particlesRadius: 3,
-  particlesCount: 60,
-  particlesMaxV: 0.5,
+  particlesRadius: 2,
+  particlesCount: 20,
+  particlesMaxV: 0.2,
+  particlesLife: 50,
 };
 
 window.addEventListener('resize', () => {
@@ -270,14 +272,36 @@ window.addEventListener('resize', () => {
 	canvas.height = h;
 });
 
+let n_x, n_y;
+
+let mouse = {
+  x: undefined,
+  y: undefined
+};
+canvas.addEventListener('mousemove', function(event){
+  mouse.x = event.x;
+  mouse.y = event.y;
+  console.log(mouse);
+});
+
+
+
 class Particles {
   constructor(){
     this.x = Math.random()*w;
     this.y = Math.random()*h;
     this.vX = Math.random()*(properties.particlesMaxV*2)-properties.particlesMaxV;
     this.vY = Math.random()*(properties.particlesMaxV*2)-properties.particlesMaxV;
+    this.life = Math.random()*properties.particlesLife*60;
   }
+ 
   position() {
+    if(mouse.x - this.x < 10 && mouse.x - this.x > -10) {
+     this.x=Math.random()*w;
+    }
+    if(mouse.y - this.y < 10 && mouse.y - this.y > -10) {
+     this.y=Math.random()*h;
+    }
     this.x + this.vX > w && this.vX > 0 || this.x + this.vX < 0 && this.x < 0? this.vX*=-1: this.vX;
     this.y + this.vY > h && this.vY > 0 || this.y + this.vY < 0 && this.y < 0? this.vY*=-1: this.vY;
     this.x += this.vX;
@@ -285,22 +309,36 @@ class Particles {
   }
   reDraw() {
     context.beginPath();
-    context.arc(this.x, this.y, properties.particlesRadius, 0, Math.PI*2 );
+    context.arc(this.x, this.y, Math.random()*properties.particlesRadius, 0, Math.PI*2 );
     context.closePath;
     context.fillStyle = properties.particlesColor;
     context.fill();
+  }
+  reCalcLife() {
+    if(this.life < 1) {
+      this.x = Math.random()*w;
+      this.y = Math.random()*h;
+      this.vX = Math.random()*(properties.particlesMaxV*2)-properties.particlesMaxV;
+      this.vY = Math.random()*(properties.particlesMaxV*2)-properties.particlesMaxV;
+      this.life = Math.random()*properties.particlesLife*60;
+    }
+    this.life--;
+  }
+  mousParticle() {
   }
 };
 
 function reDrawBackgraund() { // Заливка фона
   context.fillStyle = properties.bgColor;
-  context.fillRect(0, 0, w, h)
+  context.fillRect(0, 0, w, h);
 }
 
 function reDrawParticles() {
   for(let i in particles){
+    particles[i].reCalcLife();
     particles[i].position();
     particles[i].reDraw();
+    
   }
 }
 
