@@ -281,12 +281,10 @@ let mouse = {
 canvas.addEventListener('mousemove', function(event){
   mouse.x = event.x;
   mouse.y = event.y;
-  console.log(mouse);
 });
 canvas.addEventListener('touchmove', function(event){
   mouse.x = event.x;
   mouse.y = event.y;
-  console.log(mouse);
 });
 
 
