@@ -248,9 +248,76 @@ for (let smoothLink of smoothLinks) {
 const windowInnerWidth = document.documentElement.clientWidth; // Ширина канваса от ширины окна без элем.браузера
 const windowInnerHeight = document.documentElement.clientHeight; // Высота канваса от ширины окна без элем.браузера
 */
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let raf;
+
+
+const innerX = canvas.width = document.documentElement.clientWidth;
+const innerY = canvas.height = document.documentElement.clientHeight;
+
+window.addEventListener('resize', () => {
+	canvas.width = innerX;
+	canvas.height = innerY;
+  
+});
+
+
+
+
+const ball = {
+  x: 0,
+  y: 0,
+  vx: 2,
+  vy: 1,
+  radius: 10,
+  color: '#6668ac',
+  draw: function() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+    ctx.closePath();
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  }
+};
+
+
+function clear() {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+}
+
+function draw() {
+  clear();
+  ball.draw();
+  ball.x += ball.vx;
+  ball.y += ball.vy;
+
+  if (ball.y + ball.vy > canvas.height || ball.y + ball.vy < 0) {
+    ball.vy = -ball.vy;
+  }
+  if (ball.x + ball.vx > canvas.width || ball.x + ball.vx < 0) {
+    ball.vx = -ball.vx;
+  }
+
+  raf = window.requestAnimationFrame(draw);
+}
+
+
+
+window.requestAnimationFrame(draw);
+
+
+ball.draw();
+
+
+
+/*
 const canvas = document.getElementsByTagName("canvas")[0];
 let ctx = canvas.getContext('2d');
 
+let n_x, n_y;
 
 const innerX = canvas.width = document.documentElement.clientWidth;
 const innerY = canvas.height = document.documentElement.clientHeight;
@@ -259,95 +326,41 @@ const innerY = canvas.height = document.documentElement.clientHeight;
 window.addEventListener('resize', () => {
 	canvas.width = document.documentElement.clientWidth;
 	canvas.height = document.documentElement.clientHeight;
-  init();
-});
-
-
-ctx.beginPath();
-ctx.fillStyle = `#6668ac`;
-ctx.arc(innerX/2, 150, innerX/25, 0, 2 * Math.PI, true);
-ctx.fill();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-img.onload = function() {
-  canvas.height = this.height;
-  canvas.width = this.width;
-  document.querySelector(`.canva`).style.height = canvas.height + `px`;
-  document.querySelector(`.canva`).style.width = canvas.width +`px`;
-  let pat = new Image();
-  pat.onload = function () {
-    ctx.fillStyle = ctx.createPattern(this, "repeat");
-    ctx.fillRect(10, 0, canvas.width, canvas.height );
-  }
-  pat.src = "images/d.jpg";
   
-};
+});
 
 
 let drawStarted = false;
 
-canvas.addEventListener("mousedown", beginDraw);
-canvas.addEventListener("mouseup", endDraw);
-canvas.addEventListener("mouseout", endDraw);
-canvas.addEventListener("mousemove", draw);
+canvas.addEventListener(`mousedown`, hend);
+canvas.addEventListener(`mousemove`, draw);
+canvas.addEventListener(`mouseout`, endDraw);
+canvas.addEventListener(`mouseup`, endDraw);
+
+function hend(event) {
+  ctx.beginPath();
+  n_x = event.offsetX;
+  n_y = event.offsetY;
+ 
+  drawStarted = true;
+};
 
 
-function beginDraw(ev) {
-        ctx.beginPath();
-        n_x = ev.offsetX;
-        n_y = ev.offsetY;
-        ctx.moveTo(n_x, n_y);
-        drawStarted = true;
-      }
+function draw(event) {
+  if (drawStarted) {
+    ctx.arc(n_x, n_y, 10, 0, 2 * Math.PI, true);
+    ctx.fillStyle = `#6668ac`;
+    ctx.fill();
+    ctx.moveTo(n_x, n_y);
+    n_x = event.offsetX;
+    n_y = event.offsetY;
+  }
+};
 
-      // Эта функция вызывается каждый раз, когда вы перемещаете мышь.
-      // Но рисование происходит только когда вы удерживаете кнопку мыши
-      // нажатой.
-      function draw(ev) {
-        if (drawStarted) {
-          console.log(n_x + " " + n_y + " " + (n_x + 5) + " " + (n_y + 5));
-          //делаем пиксели прозрачными
-          
-          ctx.arc(n_x, n_y, 50, 0, 2 * Math.PI, false);
-          ctx.stroke();
-
-          
-          ctx.clearRect(n_x, n_y, 80, 150);
-          ctx.moveTo(ev._x, ev._y);
-          n_x = ev.offsetX;
-          n_y = ev.offsetY;
-        }
-      }
-
-      // Событие при отпускании мыши
-      function endDraw(ev) {
-        if (drawStarted) {
-          draw(ev);
-          drawStarted = false;
-        }
-      }
-
+function endDraw(event) {
+  if (drawStarted) {
+    draw(event);
+    drawStarted = false;
+  }
+};
 */
