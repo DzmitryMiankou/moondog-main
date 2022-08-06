@@ -619,3 +619,9 @@ footer .footer__menu a {
   bottom:0;
   pointer-events: none;
 }
+
+.canva__sky {
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+}
