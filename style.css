@@ -635,6 +635,16 @@ footer .footer__menu a {
   z-index: 0;
 }
 
+.canva__ground-elem3 {
+  width: 50vw;
+  height: 8vmax;
+  background: linear-gradient(180deg, #41436f 0%, rgba(0, 0, 0, 1) 22%);
+  border-radius: 35% 65% 52% 48% / 74% 46% 54% 26%;
+  top: 720px;
+  z-index: 0;
+  right: 0;
+}
+
 .canva__clouds-elem1 {
   position: absolute;
   width: 50vw;

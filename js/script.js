@@ -267,8 +267,8 @@ const properties = { // свойства объектов
   bgColor: `rgba(0, 0, 0, 0.08)`,
   particlesColor: `#dcd4d1`,
   particlesRadius: 2,
-  particlesCount: 50,
-  particlesMaxV: 0.2,
+  particlesCount: 60,
+  particlesMaxV: 0.1,
   particlesLife: 50,
 };
 
@@ -282,11 +282,11 @@ let mouse = {
   x: undefined,
   y: undefined
 };
-canvas.addEventListener('mousemove', function(event){
+window.addEventListener('mousemove', function(event){
   mouse.x = event.x;
   mouse.y = event.y;
 });
-canvas.addEventListener('touchmove', function(event){
+window.addEventListener('touchmove', function(event){
   mouse.x = event.x;
   mouse.y = event.y;
 });
