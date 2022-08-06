@@ -282,11 +282,14 @@ let mouse = {
   x: undefined,
   y: undefined
 };
-window.addEventListener('mousemove', function(event){
+
+const canva = document.querySelector('.canva');
+
+canva.addEventListener('mousemove', function(event){
   mouse.x = event.x;
   mouse.y = event.y;
 });
-window.addEventListener('touchmove', function(event){
+canva.addEventListener('touchmove', function(event){
   mouse.x = event.x;
   mouse.y = event.y;
 });
