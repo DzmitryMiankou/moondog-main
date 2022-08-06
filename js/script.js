@@ -260,11 +260,14 @@ const w = canvas.width = innerWidth;
 const particles = [];
 
 
+
+
+
 const properties = { // свойства объектов
   bgColor: `rgba(0, 0, 0, 0.08)`,
   particlesColor: `#dcd4d1`,
   particlesRadius: 2,
-  particlesCount: 20,
+  particlesCount: 50,
   particlesMaxV: 0.2,
   particlesLife: 50,
 };
@@ -274,7 +277,6 @@ window.addEventListener('resize', () => {
 	canvas.height = h;
 });
 
-let n_x, n_y;
 
 let mouse = {
   x: undefined,
@@ -347,7 +349,7 @@ function reDrawParticles() {
   }
 }
 
-function loop() { //самовызывание анимации поаторр
+function loop() { //самовызывание анимации повтор
   reDrawBackgraund();
   reDrawParticles();
   requestAnimationFrame(loop);
@@ -363,6 +365,8 @@ function init() { //инициация программы
 
 
 init();
+
+
 
 
 

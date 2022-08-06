@@ -611,26 +611,43 @@ footer .footer__menu a {
   z-index: 1;
   height: 800px;
 }
-.canva__earth {
+.canva__ground > div {
   position: absolute;
   content: "";
+}
+
+
+.canva__ground-elem1 {
   width: 100vw;
   height: 8vmax;
   background: linear-gradient(180deg, var(--blue-color) 0%, rgba(0, 0, 0, 1) 37%);
   z-index: 5;
   border-radius: 44% 56% 53% 47% / 75% 76% 24% 25%;
-  top: 750px;
+  top: 730px;
   z-index: 1;
 }
-.canva__earth2 {
-  position: absolute;
-  content: "";
+.canva__ground-elem2 {  
   width: 50vw;
   height: 8vmax;
   background: linear-gradient(180deg, #41436f 0%, rgba(0, 0, 0, 1) 22%);
-  z-index: 5;
   border-radius: 35% 65% 52% 48% / 74% 46% 54% 26%;
- top:730px;
- z-index: 0;
+  top:720px;
+  z-index: 0;
 }
 
+.canva__clouds-elem1 {
+  position: absolute;
+  width: 50vw;
+}
+
+.canva__clouds-elem2 {
+  position: absolute;
+  width: 37vw;
+  right: 0;
+}
+
+.canva__clouds-elem3 {
+  position: absolute;
+  width: 30vw;
+  left: 30%;
+}
