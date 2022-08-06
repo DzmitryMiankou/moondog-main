@@ -341,7 +341,7 @@ function reDrawBackgraund() { // Заливка фона
   context.fillStyle = properties.bgColor;
   context.fillRect(0, 0, w, h);
   
-}
+};
 
 function reDrawParticles() {
   for(let i in particles){
@@ -350,13 +350,13 @@ function reDrawParticles() {
     particles[i].reDraw();
     
   }
-}
+};
 
 function loop() { //самовызывание анимации повтор
   reDrawBackgraund();
   reDrawParticles();
   requestAnimationFrame(loop);
-}
+};
 
 
 function init() { //инициация программы

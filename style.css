@@ -136,6 +136,7 @@ header .header__logo svg {
   width: 100%;
   max-height: 100%;
   object-fit: cover;
+  pointer-events: none;
 }
 footer {
   display: flex;
@@ -226,6 +227,7 @@ footer .footer__menu a {
 }
 .svg  {
   transform: scaleY(-1);
+  pointer-events: none;
 }
 
 
@@ -377,6 +379,7 @@ footer .footer__menu a {
 }
 .video__content img {
   width: 800px;
+  pointer-events: none;
 }
 
 .video-itam {
@@ -614,4 +617,5 @@ footer .footer__menu a {
 .svggg {
   position: absolute;
   bottom:0;
+  pointer-events: none;
 }
