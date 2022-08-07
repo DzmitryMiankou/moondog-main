@@ -1,5 +1,13 @@
 `use strict`
-
+window.addEventListener('load',function (params) {
+    setTimeout(() => {
+        const preloader = document.querySelector(`#pagePreloader`);
+        if(!preloader.classList.contains(`done`)) {
+            preloader.classList.add(`done`);
+            addAnimItem();
+        }
+    }, 1000);
+});
 
 const footerButtons = document.querySelector(`.footer__main`);
 
@@ -373,40 +381,42 @@ function init() { //инициация программы
 
 
 
+function addAnimItem(params) {
+  const animItems = document.querySelectorAll(`._anim-items`);
+  if(animItems.length > 0) {
+    window.addEventListener(`scroll`, animOnScroll);
+      function animOnScroll() {
+      for (let index = 0; index < animItems.length; index++) {
+        const animItem = animItems[index];
+        const animItemHight = animItem.offsetHeight;
+        const animItemOffset = offset(animItem).top;
+        const animStart = 4;
 
+        let animItemPoint = window.innerHeight - animItemHight / animStart;
 
-const animItems = document.querySelectorAll(`._anim-items`);
-if(animItems.length > 0) {
-  window.addEventListener(`scroll`, animOnScroll);
-    function animOnScroll() {
-    for (let index = 0; index < animItems.length; index++) {
-      const animItem = animItems[index];
-      const animItemHight = animItem.offsetHeight;
-      const animItemOffset = offset(animItem).top;
-      const animStart = 4;
-
-      let animItemPoint = window.innerHeight - animItemHight / animStart;
-
-      if(animItemHight > window.innerHeight) {
-        window.innerHeight - window.innerHeight / animStart;
-      }
-      if((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHight)) {
-        animItem.classList.add(`_active`);
-      } else {
-        if(!animItem.classList.contains(`_anim-no-hide`)) {
-          animItem.classList.remove(`_active`);
+        if(animItemHight > window.innerHeight) {
+          window.innerHeight - window.innerHeight / animStart;
         }
-      }
+        if((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHight)) {
+          animItem.classList.add(`_active`);
+        } else {
+          if(!animItem.classList.contains(`_anim-no-hide`)) {
+            animItem.classList.remove(`_active`);
+          }
+        }
+      };
     };
+    function offset(el) {
+      const rec = el.getBoundingClientRect(),
+      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      return {top: rec.top + scrollTop, left: rec.left + scrollLeft};
+    };
+    setTimeout(() => {
+      animOnScroll();
+    }, 300);
   };
-  function offset(el) {
-    const rec = el.getBoundingClientRect(),
-    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    return {top: rec.top + scrollTop, left: rec.left + scrollLeft}
-  }
-  setTimeout(() => {
-    animOnScroll();
-  }, 300);
 };
+
+
 
