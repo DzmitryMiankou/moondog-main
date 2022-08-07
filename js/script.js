@@ -119,13 +119,13 @@ const content = document.querySelectorAll(`.video-itam`);// Массив мед�
 content.forEach(element => element.style.cssText=`display:none;`);
 
 
-window.onload = function() {
+document.addEventListener("DOMContentLoaded", function() {
   content[0].style.cssText=``;
 
   const tv = new Tvpresentatin(content);
   tv.clickInput();
   tv.scrollTv();
-};
+});
 
 let c;
 
