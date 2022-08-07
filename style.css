@@ -227,11 +227,19 @@ footer .footer__menu a {
   background-color:black;
   background: linear-gradient(#dcd4d1 1%,#000000 3%);
 }
-.information h2 {
+.information__life {
   color: #6668ac;
   font-size: 4rem;
   margin-left: 10%;
+  transform: translate(-50%,0);
+  opacity: 0;
+  transition: all 1s ease 0s;
 }
+.information__life._active {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
 .svg  {
   transform: scaleY(-1);
   pointer-events: none;
@@ -637,14 +645,18 @@ footer .footer__menu a {
   pointer-events: none;
 }
 
+
 .canva__sky {
   position: absolute;
   top: 0;
   pointer-events: none;
   opacity: 0;
+  transform: translate(0, 2%);
   transition: all 1s ease 0s;
 }
 
 .canva__sky._active {
+  transform: translate(0, 0);
   opacity: 1;
+  transition: all 1s ease 0.5s;
 }
