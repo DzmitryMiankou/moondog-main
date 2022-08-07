@@ -53,11 +53,18 @@ header .header__logo svg {
   height: auto;
   min-width: 20px;
 }
-.header__text h1 {
+.header__text-titel {
   font-size: 8rem;
   color: rgb(255, 255, 255);
   text-align: center;
   font-family: "Corbel";
+  transform: translate(0,50%);
+  opacity: 0;
+  transition: all 0.8s ease 0s;
+}
+.header__text-titel._active {
+  transform: translate(0px, 0px);
+  opacity: 1;
 }
 .header__menu {
   display: flex;

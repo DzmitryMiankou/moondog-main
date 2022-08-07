@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const getfilter = new CreatTooltip(footerButtons);
   getfilter.appendElement();
   getfilter.endAppendElement();
+  init();
 });
 
 /*Всплывающие подсказки*/
@@ -367,7 +368,6 @@ function init() { //инициация программы
 };
 
 
-init();
 
 
 
@@ -375,61 +375,36 @@ init();
 
 
 
-/*<img
-        id="earth"
-        class="canva__earth"
-        src="images/canvasComoposition/earth.svg"
-        alt="svg"
-      />*/
+const animItems = document.querySelectorAll(`._anim-items`);
+if(animItems.length > 0) {
+  window.addEventListener(`scroll`, animOnScroll);
+    function animOnScroll() {
+    for (let index = 0; index < animItems.length; index++) {
+      const animItem = animItems[index];
+      const animItemHight = animItem.offsetHeight;
+      const animItemOffset = offset(animItem).top;
+      const animStart = 4;
 
-/*
-const canvas = document.getElementsByTagName("canvas")[0];
-let ctx = canvas.getContext('2d');
+      let animItemPoint = window.innerHeight - animItemHight / animStart;
 
-let n_x, n_y;
-
-const innerX = canvas.width = document.documentElement.clientWidth;
-const innerY = canvas.height = document.documentElement.clientHeight;
-
-
-window.addEventListener('resize', () => {
-	canvas.width = document.documentElement.clientWidth;
-	canvas.height = document.documentElement.clientHeight;
-  
-});
-
-
-let drawStarted = false;
-
-canvas.addEventListener(`mousedown`, hend);
-canvas.addEventListener(`mousemove`, draw);
-canvas.addEventListener(`mouseout`, endDraw);
-canvas.addEventListener(`mouseup`, endDraw);
-
-function hend(event) {
-  ctx.beginPath();
-  n_x = event.offsetX;
-  n_y = event.offsetY;
- 
-  drawStarted = true;
-};
-
-
-function draw(event) {
-  if (drawStarted) {
-    ctx.arc(n_x, n_y, 10, 0, 2 * Math.PI, true);
-    ctx.fillStyle = `#6668ac`;
-    ctx.fill();
-    ctx.moveTo(n_x, n_y);
-    n_x = event.offsetX;
-    n_y = event.offsetY;
+      if(animItemHight > window.innerHeight) {
+        window.innerHeight - window.innerHeight / animStart;
+      }
+      if((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHight)){
+        animItem.classList.add(`_active`);
+      } else {
+        animItem.classList.remove(`_active`);
+      }
+    };
+  };
+  function offset(el) {
+    const rec = el.getBoundingClientRect(),
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    return {top: rec.top + scrollTop, left: rec.left + scrollLeft}
   }
+  setTimeout(() => {
+    animOnScroll();
+  }, 300);
 };
 
-function endDraw(event) {
-  if (drawStarted) {
-    draw(event);
-    drawStarted = false;
-  }
-};
-*/
