@@ -390,10 +390,12 @@ if(animItems.length > 0) {
       if(animItemHight > window.innerHeight) {
         window.innerHeight - window.innerHeight / animStart;
       }
-      if((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHight)){
+      if((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHight)) {
         animItem.classList.add(`_active`);
       } else {
-        animItem.classList.remove(`_active`);
+        if(!animItem.classList.contains(`_anim-no-hide`)) {
+          animItem.classList.remove(`_active`);
+        }
       }
     };
   };

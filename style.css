@@ -108,6 +108,7 @@ header .header__logo svg {
 .biography__main {
   padding-top: 3%;
 }
+
 .biography__text,
 .biography__text2 {
   font-size: 2rem;
@@ -408,13 +409,23 @@ footer .footer__menu a {
   height: auto;
   box-shadow: 0 -14px 28px rgba(0, 0, 0, 0.25), 0 -10px 10px rgba(0, 0, 0, 0.22);
 }
-.video-text p {
-  padding: 3% 0 3% 0%;
-  font-size: 1.2rem;
-  width: 80%;
-  margin: auto;
-  text-align: justify;
+.video-text-el1{
+  opacity: 0;
+  transition: all 0.8s ease 0s;
 }
+.video-text-el1._active {
+  opacity: 1;
+  transition: all 0.8s ease 0.3s;
+}
+
+
+
+
+
+
+
+
+
 .tv-icon {
   position: fixed;
   object-fit: cover;
