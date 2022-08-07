@@ -1,13 +1,19 @@
 `use strict`
+
 window.addEventListener('load',function (params) {
-    setTimeout(() => {
-        const preloader = document.querySelector(`#pagePreloader`);
-        if(!preloader.classList.contains(`done`)) {
-            preloader.classList.add(`done`);
-            addAnimItem();
-        }
-    }, 1000);
+  document.body.style.overflow = `hidden`;
+  window.scrollTo(0, 0);
+  setTimeout(() => {
+    const preloader = document.querySelector(`#pagePreloader`);
+    if(!preloader.classList.contains(`done`)) {
+      preloader.classList.add(`done`);
+      document.querySelector(`body`).style.overflow = ``;
+      addAnimItem();
+    }
+  }, 1000);
 });
+
+
 
 const footerButtons = document.querySelector(`.footer__main`);
 
@@ -417,6 +423,5 @@ function addAnimItem(params) {
     }, 300);
   };
 };
-
 
 

@@ -641,4 +641,10 @@ footer .footer__menu a {
   position: absolute;
   top: 0;
   pointer-events: none;
+  opacity: 0;
+  transition: all 1s ease 0s;
+}
+
+.canva__sky._active {
+  opacity: 1;
 }
