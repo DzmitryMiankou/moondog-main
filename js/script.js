@@ -2,6 +2,7 @@
 
 window.addEventListener('load',function (params) {
   document.body.style.overflow = `hidden`;
+  
   /*
   window.scrollTo(0, 0);*/
   setTimeout(() => {
@@ -10,8 +11,10 @@ window.addEventListener('load',function (params) {
       preloader.classList.add(`done`);
       document.querySelector(`body`).style.overflow = ``;
       addAnimItem();
+      scrollElem();
     }
   }, 1000);
+  
 });
 
 
@@ -259,11 +262,6 @@ for (let smoothLink of smoothLinks) {
 };
 
 
-/*
-
-const windowInnerWidth = document.documentElement.clientWidth; // Ширина канваса от ширины окна без элем.браузера
-const windowInnerHeight = document.documentElement.clientHeight; // Высота канваса от ширины окна без элем.браузера
-*/
 
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
@@ -395,8 +393,8 @@ function addAnimItem(params) {
       function animOnScroll() {
       for (let index = 0; index < animItems.length; index++) {
         const animItem = animItems[index];
-        const animItemHight = animItem.offsetHeight;
-        const animItemOffset = offset(animItem).top;
+        const animItemHight = animItem.offsetHeight;//размер элемента по высате
+        const animItemOffset = offset(animItem).top;// от 0 до элемента 
         const animStart = 4;
 
         let animItemPoint = window.innerHeight - animItemHight / animStart;
@@ -404,7 +402,7 @@ function addAnimItem(params) {
         if(animItemHight > window.innerHeight) {
           window.innerHeight - window.innerHeight / animStart;
         }
-        if((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHight)) {
+        if((scrollY > animItemOffset - animItemPoint) && scrollY < (animItemOffset + animItemHight)) {
           animItem.classList.add(`_active`);
         } else {
           if(!animItem.classList.contains(`_anim-no-hide`)) {
@@ -415,7 +413,7 @@ function addAnimItem(params) {
     };
     function offset(el) {
       const rec = el.getBoundingClientRect(),
-      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, //Safari  не  видит scrrollL,T. Эта функциия добавляет кроссбраузерности
       scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       return {top: rec.top + scrollTop, left: rec.left + scrollLeft};
     };
@@ -425,4 +423,37 @@ function addAnimItem(params) {
   };
 };
 
+  const moonText = document.querySelector(`.canva__moontext`);
+  let moonTopOffset = window.innerHeight - offset(moonText).top;
+  console.log(moonTopOffset);
+/*_______________________________________________________________________________ */
 
+function scrollElem(params) {
+  
+  window.addEventListener(`scroll`, sss);
+  function sss () {
+    let value = window.scrollY;
+    let fd= moonText.style.right = value-(moonTopOffset-270)/-1  + `px`;
+    console.log(fd);
+  };
+};
+
+ function offset(el) {
+      const rec = el.getBoundingClientRect(),
+      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, //Safari  не  видит scrrollL,T. Эта функциия добавляет кроссбраузерности
+      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      return {top: rec.top + scrollTop, left: rec.left + scrollLeft};
+    };
+/*
+		document.querySelector("#overflow").onmousemove = function(){cursorXY(event);}
+		//высчитываем начальные значения положения по горизонтали птицы и фона из стилей
+		let leftFirst = parseFloat((getComputedStyle(document.getElementById('first'))).left);
+		let leftSecond = parseFloat((getComputedStyle(document.getElementById('second'))).left);
+		
+	//по движению мыши слегка изменяем положение картинок, подбираются эти значения методом пробы
+
+		function cursorXY(e) {
+    	  document.getElementById('first').style.left = leftFirst + e.pageX/30 + 'px';	
+		  document.getElementById('second').style.left = leftSecond - e.pageX/4 + 'px';	
+		 }
+     */

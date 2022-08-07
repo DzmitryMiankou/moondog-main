@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 :root {
   box-sizing: border-box;
   --main-color: rgb(0, 0, 0); /* Переменная черного цвета */
@@ -638,11 +640,13 @@ footer .footer__menu a {
   background-color: rgb(0, 0, 0);
   z-index: 1;
   height: 800px;
+  overflow: hidden;
 }
 .svggg {
   position: absolute;
   bottom:0;
   pointer-events: none;
+  
 }
 
 
@@ -659,4 +663,12 @@ footer .footer__menu a {
   transform: translate(0, 0);
   opacity: 1;
   transition: all 1s ease 0.5s;
+}
+
+.canva__moontext {
+  position: absolute;
+  bottom: 0;
+  pointer-events: none;
+  width: 100%;
+  scroll-snap-align: start;
 }
