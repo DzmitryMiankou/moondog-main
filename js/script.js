@@ -265,7 +265,7 @@ for (let smoothLink of smoothLinks) {
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 
-const h = canvas.height = 800;
+const h = canvas.height = 900;
 const w = canvas.width = innerWidth;
 
 
@@ -282,7 +282,7 @@ const properties = { // свойства объектов
   particlesRadius: 2,
   particlesCount: 60,
   particlesMaxV: 0.1,
-  particlesLife: 50,
+  particlesLife: 70,
 };
 
 window.addEventListener('resize', () => {
@@ -428,13 +428,15 @@ function addAnimItem(params) {
 function namee(params) {
 
   const parallax = document.querySelector(`.canva`);
+   const container = document.querySelector(`.parallax__container`);
+   const moonText = document.querySelector(`.canva__moontext`);
   if(parallax) {
-    const container = document.querySelector(`.parallax__container`);
+   
 
     const moonText = document.querySelector(`.canva__moontext`);
 
-    const forText = 11;
-    const speed = 0.06;
+    const forText = 6;
+    const speed = 0.05;
 
     let positionX = 0;
     let positionY = 0;
@@ -447,8 +449,7 @@ function namee(params) {
 
     positionX = positionX + (distX * speed);
     positionY = positionY + (distY * speed);
-    
-    moonText.style.cssText = `transform: translate(${positionX / forText}%);`;
+    let a =moonText.style.cssText = `transform: translate(${positionX / forText}%,${positionX / -28}%);`;
     requestAnimationFrame(setMausParallaxStyle);
   }
     setMausParallaxStyle();
@@ -460,8 +461,32 @@ function namee(params) {
       const coordX = e.pageX - parallaxWidth / 2;
       const coordY = e.pageY - parallaxHight / 2;
 
+      console.log(parallaxHight);
+
       coordXprocent = coordX / parallaxWidth * 100;
       coordYprocent = coordY / parallaxHight * 100;
     });
   };
+
+
+  let thresholdSets = [];
+for (let i = 0; i <+ 1.0; i+=0.005) {
+  thresholdSets.push(i);  
+}
+const callback = function(entries, observer) {
+  const scrollTopProcent = window.pageYOffset / parallax.offsetHeight * 100;
+  setParallaxItemStyle(scrollTopProcent);
 };
+const observer = new IntersectionObserver(callback, {
+  threshold: thresholdSets
+});
+
+observer.observe(document.querySelector(`.parallax__container`));
+
+function setParallaxItemStyle(scrollTopProcent) {
+  moonText.style.cssText = `transform: translate(0%,-${scrollTopProcent / 40}%);`;
+}
+};
+
+
+
