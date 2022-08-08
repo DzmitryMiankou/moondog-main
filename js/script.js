@@ -2,7 +2,7 @@
 
 window.addEventListener('load',function (params) {
   document.body.style.overflow = `hidden`;
-  
+  verticalScrolling();
   /*
   window.scrollTo(0, 0);*/
   setTimeout(() => {
@@ -480,17 +480,27 @@ function animaJS() {
   });
 };
 
+function verticalScrolling(params) {
+  const speed = 0.07;
+  const forElem = 150;// перед элеметом 
+  window.addEventListener(`scroll`, function(e) {
+    const target = this.document.querySelector(`.video-text-el2`);// полный цикл движения
+    const scrolled = this.window.pageYOffset - (offset(target).top - forElem); // не полный цикл
+    function styleElement() {
+      const rate = scrolled * speed;
+      target.style.cssText = `transform: translate(${rate}%, 0px);  transition: all 0.9s ease 0s;`;
+    };
+    requestAnimationFrame(styleElement);
+  });
 
-window.addEventListener(`scroll`, function(e) {
-  const target = this.document.querySelector(`.biography__text2`);
+  function offset(el) {
+      const rec = el.getBoundingClientRect(),
+      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, //Safari  не  видит scrrollL,T. Эта функциия добавляет кроссбраузерности
+      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      return {top: rec.top + scrollTop, left: rec.left + scrollLeft};
+    };
+};
 
-  const scrolled = this.window.pageYOffset / 8;
-
-  const rate = scrolled * 0.5;
-
-  target.style.transform = `translate(${rate}%, 0px)`
-  requestAnimationFrame();
-});
 
 
 
