@@ -54,6 +54,7 @@ header .header__logo svg {
   width: auto;
   height: auto;
   min-width: 20px;
+  rotate: 180deg;
 }
 .header__text-titel {
   font-size: 8rem;
