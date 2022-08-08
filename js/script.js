@@ -2,9 +2,8 @@
 
 window.addEventListener('load',function (params) {
   document.body.style.overflow = `hidden`;
+  window.scrollTo(0, 0);
   verticalScrolling();
-  /*
-  window.scrollTo(0, 0);*/
   setTimeout(() => {
     const preloader = document.querySelector(`#pagePreloader`);
     if(!preloader.classList.contains(`done`)) {
