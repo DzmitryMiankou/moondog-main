@@ -2,7 +2,7 @@
 
 window.addEventListener('load',function (params) {
   document.body.style.overflow = `hidden`;
-  namee(); 
+  
   /*
   window.scrollTo(0, 0);*/
   setTimeout(() => {
@@ -11,6 +11,8 @@ window.addEventListener('load',function (params) {
       preloader.classList.add(`done`);
       document.querySelector(`body`).style.overflow = ``;
       addAnimItem();
+      animaJS();// анимация библиотека
+      scroll();
     }
   }, 1000);
   
@@ -425,7 +427,7 @@ function addAnimItem(params) {
   
 /*_______________________________________________________________________________ */
 
-function namee(params) {
+function scroll(params) {
 
   const parallax = document.querySelector(`.canva`);
    const container = document.querySelector(`.parallax__container`);
@@ -467,9 +469,32 @@ function namee(params) {
       coordYprocent = coordY / parallaxHight * 100;
     });
   };
+};
 
 
-  let thresholdSets = [];
+function animaJS() {
+  anime({
+  targets: '.logo__svg',
+  rotate: '180deg',
+  duration: 5000
+  });
+};
+
+
+window.addEventListener(`scroll`, function(e) {
+  const target = this.document.querySelector(`.biography__text2`);
+
+  const scrolled = this.window.pageYOffset / 8;
+
+  const rate = scrolled * 0.5;
+
+  target.style.transform = `translate(${rate}%, 0px)`
+  requestAnimationFrame();
+});
+
+
+
+/*let thresholdSets = [];
 for (let i = 0; i <+ 1.0; i+=0.005) {
   thresholdSets.push(i);  
 }
@@ -486,7 +511,4 @@ observer.observe(document.querySelector(`.parallax__container`));
 function setParallaxItemStyle(scrollTopProcent) {
   moonText.style.cssText = `transform: translate(0%,-${scrollTopProcent / 40}%);`;
 }
-};
-
-
-
+};*/
