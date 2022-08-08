@@ -649,6 +649,9 @@ footer .footer__menu a {
   
 }
 
+.parallax__container {
+ z-index: 4;
+}
 
 .canva__sky {
   position: absolute;
@@ -670,5 +673,4 @@ footer .footer__menu a {
   bottom: 0;
   pointer-events: none;
   width: 100%;
-  scroll-snap-align: start;
 }

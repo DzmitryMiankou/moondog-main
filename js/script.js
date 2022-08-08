@@ -2,7 +2,7 @@
 
 window.addEventListener('load',function (params) {
   document.body.style.overflow = `hidden`;
-  
+  namee(); 
   /*
   window.scrollTo(0, 0);*/
   setTimeout(() => {
@@ -11,7 +11,6 @@ window.addEventListener('load',function (params) {
       preloader.classList.add(`done`);
       document.querySelector(`body`).style.overflow = ``;
       addAnimItem();
-      scrollElem();
     }
   }, 1000);
   
@@ -423,37 +422,59 @@ function addAnimItem(params) {
   };
 };
 
-  const moonText = document.querySelector(`.canva__moontext`);
-  let moonTopOffset = window.innerHeight - offset(moonText).top;
-  console.log(moonTopOffset);
+  
 /*_______________________________________________________________________________ */
 
-function scrollElem(params) {
-  
-  window.addEventListener(`scroll`, sss);
-  function sss () {
-    let value = window.scrollY;
-    let fd= moonText.style.right = value-(moonTopOffset-270)/-1  + `px`;
-    console.log(fd);
+function namee(params) {
+
+  const parallax = document.querySelector(`.canva`);
+  if(parallax) {
+    const container = document.querySelector(`.parallax__container`);
+
+    const moonText = document.querySelector(`.canva__moontext`);
+
+    const forText = 11;
+
+
+    const speed = 0.06;
+
+    let positionX = 0;
+    let positionY = 0;
+    let coordXprocent = 0;
+    let coordYprocent = 0;
+
+  function setMausParallaxStyle() {
+    const distX = coordXprocent - positionX;
+    const distY = coordYprocent - positionY;
+
+    positionX = positionX + (distX * speed);
+    positionY = positionY + (distY * speed);
+
+    
+
+    
+    let a = moonText.style.cssText = `transform: translate(${positionX / forText}%);`;
+   console.log(a);
+    requestAnimationFrame(setMausParallaxStyle);
+  }
+    setMausParallaxStyle();
+    parallax.addEventListener(`mousemove`, function (e) {
+      
+      const parallaxHight = parallax.offsetHeight;
+      const parallaxWidth = parallax.offsetWidth;
+
+      const coordX = e.pageX - parallaxWidth / 2;
+      const coordY = e.pageY - parallaxHight / 2;
+
+      coordXprocent = coordX / parallaxWidth * 100;
+      coordYprocent = coordY / parallaxHight * 100;
+
+
+
+    });
+
+
+
   };
+
 };
-
- function offset(el) {
-      const rec = el.getBoundingClientRect(),
-      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, //Safari  не  видит scrrollL,T. Эта функциия добавляет кроссбраузерности
-      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      return {top: rec.top + scrollTop, left: rec.left + scrollLeft};
-    };
-/*
-		document.querySelector("#overflow").onmousemove = function(){cursorXY(event);}
-		//высчитываем начальные значения положения по горизонтали птицы и фона из стилей
-		let leftFirst = parseFloat((getComputedStyle(document.getElementById('first'))).left);
-		let leftSecond = parseFloat((getComputedStyle(document.getElementById('second'))).left);
-		
-	//по движению мыши слегка изменяем положение картинок, подбираются эти значения методом пробы
-
-		function cursorXY(e) {
-    	  document.getElementById('first').style.left = leftFirst + e.pageX/30 + 'px';	
-		  document.getElementById('second').style.left = leftSecond - e.pageX/4 + 'px';	
-		 }
-     */
