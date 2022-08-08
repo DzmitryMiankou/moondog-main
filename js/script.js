@@ -434,8 +434,6 @@ function namee(params) {
     const moonText = document.querySelector(`.canva__moontext`);
 
     const forText = 11;
-
-
     const speed = 0.06;
 
     let positionX = 0;
@@ -449,12 +447,8 @@ function namee(params) {
 
     positionX = positionX + (distX * speed);
     positionY = positionY + (distY * speed);
-
     
-
-    
-    let a = moonText.style.cssText = `transform: translate(${positionX / forText}%);`;
-   console.log(a);
+    moonText.style.cssText = `transform: translate(${positionX / forText}%);`;
     requestAnimationFrame(setMausParallaxStyle);
   }
     setMausParallaxStyle();
@@ -468,13 +462,6 @@ function namee(params) {
 
       coordXprocent = coordX / parallaxWidth * 100;
       coordYprocent = coordY / parallaxHight * 100;
-
-
-
     });
-
-
-
   };
-
 };
