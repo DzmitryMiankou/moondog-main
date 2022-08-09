@@ -471,35 +471,29 @@ function scroll(params) {
 function animaJS() {
   anime({
   targets: '.logo__svg',
-  rotate: '180deg',
+  /*rotate: '90deg',*/
   duration: 5000
   });
 };
 
+
+
+
+
 function verticalScrolling(params) {
-  const speed = 0.06;
-  const forElem = 200;// перед элеметом 
+  const speed = 0.07;
+  const forElem = 90;// перед элеметом 
+  const target = document.querySelector(`._verticalScroll`);
   window.addEventListener(`scroll`, function(e) {
-    const target = this.document.querySelector(`.video-text-el2`);// полный цикл движения
     const scrolled = this.window.pageYOffset - (offset(target).top - forElem); // не полный цикл
     function styleElement() {
-      const rate = scrolled * speed;
-      let animation;
-      if(rate < 0) {
-        animation = anime({
-        targets: '.video-text-el2',
-        translateX: {  
-          value: function() { 
-            return rate +`%`;
-          },
-          duration:0
-        },   
-       });
-      if(rate >= 0 || null) {
-        animation.pause;
-      };
-    };
-    /* target.style.cssText = `transform: translate(${rate}%, 0px); `;*/
+      const size = scrolled * speed;
+      if(size < 0) {
+        let a = target.style.cssText = `transform: translate(${Math.floor(size)}%, 0px); `;
+        console.log(a);
+      }else {
+        target.style.cssText = ``;
+      }
     };
     requestAnimationFrame(styleElement);
   });
@@ -509,28 +503,8 @@ function verticalScrolling(params) {
 
 
 function offset(el) {
-      const rec = el.getBoundingClientRect(),
-      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, //Safari  не  видит scrrollL,T. Эта функциия добавляет кроссбраузерности
-      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      return {top: rec.top + scrollTop, left: rec.left + scrollLeft};
-    };
-
-
-/*let thresholdSets = [];
-for (let i = 0; i <+ 1.0; i+=0.005) {
-  thresholdSets.push(i);  
-}
-const callback = function(entries, observer) {
-  const scrollTopProcent = window.pageYOffset / parallax.offsetHeight * 100;
-  setParallaxItemStyle(scrollTopProcent);
+  const rec = el.getBoundingClientRect(),
+  scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, //Safari  не  видит scrrollL,T. Эта функциия добавляет кроссбраузерности
+  scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  return {top: rec.top + scrollTop, left: rec.left + scrollLeft};
 };
-const observer = new IntersectionObserver(callback, {
-  threshold: thresholdSets
-});
-
-observer.observe(document.querySelector(`.parallax__container`));
-
-function setParallaxItemStyle(scrollTopProcent) {
-  moonText.style.cssText = `transform: translate(0%,-${scrollTopProcent / 40}%);`;
-}
-};*/
