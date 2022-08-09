@@ -16,7 +16,7 @@
 
 body {
   display: grid;
-  grid-template-rows: auto auto auto auto auto 60px;
+  grid-template-rows: repeat(6, auto) 60px;
   font-family: "Tahoma";
   overflow-x: hidden;
 }
@@ -32,7 +32,7 @@ header .str0 {
   stroke-width: 140;
   stroke-miterlimit: 22.9256;
 }
-header .fil0 {
+header .logo__svg-path {
   fill: var(--logo-color-white);
 }
 .header__logo img {
@@ -418,14 +418,6 @@ footer .footer__menu a {
   height: auto;
   box-shadow: 0 -14px 28px rgba(0, 0, 0, 0.25), 0 -10px 10px rgba(0, 0, 0, 0.22);
 }
-.video-text-el1{
-  opacity: 0;
-  transition: all 0.8s ease 0s;
-}
-.video-text-el1._active {
-  opacity: 1;
-  transition: all 0.8s ease 0.3s;
-}
 
 
 
@@ -678,4 +670,11 @@ footer .footer__menu a {
   position:absolute;
   z-index: 2;
   width: 100%;
+}
+._verticalScroll, ._verticalScroll2 {
+  transition: all 1s ease 0s;
+}
+.paradox {
+  background-color:rgb(0, 0, 0);
+  z-index: 1;
 }

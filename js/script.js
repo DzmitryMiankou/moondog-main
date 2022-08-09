@@ -1,5 +1,14 @@
 `use strict`
 
+
+window.scrollBy({
+            top: 10,
+            behavior: 'smooth'
+        });
+
+
+
+
 window.addEventListener('load',function (params) {
   document.body.style.overflow = `hidden`;
   /*window.scrollTo(0, 0);*/
@@ -12,6 +21,7 @@ window.addEventListener('load',function (params) {
       addAnimItem();
       animaJS();// анимация библиотека
       scroll();
+      animParadox();
     }
   }, 1000);
   
@@ -347,8 +357,6 @@ class Particles {
     }
     this.life--;
   }
-  mousParticle() {
-  }
 };
 
 function reDrawBackgraund() { // Заливка фона
@@ -456,7 +464,6 @@ function scroll(params) {
       const coordX = e.pageX - parallaxWidth / 2;
       const coordY = e.pageY - parallaxHight / 2;
 
-      console.log(parallaxHight);
 
       coordXprocent = coordX / parallaxWidth * 100;
       coordYprocent = coordY / parallaxHight * 100;
@@ -481,17 +488,49 @@ function animaJS() {
 
 
 function verticalScrolling(params) {
-  const speed = 0.07;
-  const forElem = 90;// перед элеметом 
-  const target = document.querySelector(`._verticalScroll`);
-  window.addEventListener(`scroll`, function(e) {
-    const scrolled = this.window.pageYOffset - (offset(target).top - forElem); // не полный цикл
-    function styleElement() {
-      const size = scrolled * speed;
+
+  
+  window.addEventListener(`scroll`, addScroll);
+ 
+
+
+ 
+  const properties = { 
+  speed: 0.6,
+  elem: `._verticalScroll2`,
+};
+
+
+   function addScroll() {
+    const offsetTop = offset(document.querySelector(properties.elem)).top;
+    const scrolled = (window.pageYOffset - offsetTop) + window.innerHeight / 2;
+    styleE(scrolled);
+    requestAnimationFrame(addScroll);
+  }
+
+  function styleE(scrolled) {
+    let size = scrolled * properties.speed;
       if(size < 0) {
-        let a = target.style.cssText = `transform: translate(${Math.floor(size)}%, 0px); `;
-        console.log(a);
+        let a = document.querySelector(properties.elem).style.cssText = `transform: translate(${-size}%, 0px);`;
       }else {
+         document.querySelector(properties.elem).style.cssText = ``;
+      }
+      
+  }
+
+
+
+  const speed = 0.4; // время работы
+  const target = document.querySelector(`._verticalScroll`);
+  const innerY = window.innerHeight / 2;//расстояние работы
+  window.addEventListener(`scroll`, function(e) {
+    const scrolled = (this.window.pageYOffset - offset(target).top) + innerY;
+    function styleElement() {
+      let size = scrolled * speed;
+      if(size < 0) {
+        let a = target.style.cssText = `transform: translate(${size}%, 0px);`;
+      }else {
+        
         target.style.cssText = ``;
       }
     };
@@ -507,4 +546,16 @@ function offset(el) {
   scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, //Safari  не  видит scrrollL,T. Эта функциия добавляет кроссбраузерности
   scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   return {top: rec.top + scrollTop, left: rec.left + scrollLeft};
+};
+
+function animParadox() {
+var tl = anime({
+  targets: ".elem .paradox__svg-path",
+  strokeDashoffset: [anime.setDashoffset, 0],
+  easing: 'easeInOutSine',
+  duration: 2500,
+  delay: function(el, i) { return i * 250 },
+  direction: 'alternate',
+  loop: true
+});
 };
