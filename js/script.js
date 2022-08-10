@@ -71,49 +71,7 @@ class CreatTooltip {
     
 
 
-
-
-
-$(document) .ready( () => {
-  /*Настройки слайдера slick*/
-
-  $(`.slider`).slick({
-    arrows:false,// Видимость кнопок
-    dots:true,// Видимость пуль
-    adaptiveHeight:false,// адаптив вымота
-    slidesToShow:2,
-    slidesToScroll:2,
-    speed: 2000,
-    easing:`linear`,
-    infinite: true,
-    initialSlide:1,// с какого начало
-    autoplay: true,
-    autoplaySpeed:7000,
-    pouseOnFocus:false,// пауза при наведении
-    pauseOnDotsHover:false,
-    pauseOnHover:false,
-    centerMode:false,// по центру
-    variableWidth:false,// убрать промежутки
-    focusOnSelect:false,
-    fade:false,
-    centerPadding: `0px`,
-    draggable:false,//Перетаскивание элемента мышью
-    responsive:[{
-      breakpoint: 1000,
-      settings:{
-        slidesToShow:1,
-        slidesToScroll:1,
-      },
-    }]
-  });
-
-
-  $(`.slider__item-tex`).css(`padding`,`8%`);
-});// окончание ready
-
-
-
-
+ 
 
 
 
@@ -548,7 +506,6 @@ function all() {
         isElementInViewport(document.querySelector(`.video-text-el1`));
       }
  });
-
 };
 
 
@@ -575,7 +532,7 @@ scrollToGettingheadermusic.addEventListener('click', function(e) {
 
 
 const options = {
-    threshold: 0
+    threshold: 0,
 }
 const callback = function(entries, observer) {
     entries.forEach(entry => {
@@ -593,3 +550,37 @@ const observer = new IntersectionObserver(callback, options);
 
 const target = document.querySelector(`.video-text`);
 observer.observe(target);
+
+
+
+
+
+let braille = anime.timeline({
+  targets: '.motion-path .el',
+  delay: function(el, i) { return i * 200 },
+  duration: 500,
+  loop: true,
+  direction: 'alternate',
+});
+
+braille
+.add({
+  targets: '.motion-path .e1',
+  translateX: -100,
+  easing: 'easeInOutSine',
+})
+.add({
+  targets: '.motion-path .e4',
+  translateY: -100,
+  easing: 'easeInOutSine',
+})
+.add({
+  targets: '.motion-path .e3',
+  translateY: 100,
+  easing: `easeInOutSine`
+})
+.add({
+  targets: '.motion-path .e6',
+  translateX: 100,
+  easing: `easeInOutSine`
+})
