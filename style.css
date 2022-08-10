@@ -478,6 +478,8 @@ footer .footer__menu a {
   background-repeat:no-repeat;
   background-size:cover;
 }
+
+
 /*Часть с анимацией css*/
 
 
@@ -672,7 +674,7 @@ footer .footer__menu a {
   width: 100%;
 }
 ._verticalScroll, ._verticalScroll2 {
-  transition: all 1s ease 0s;
+  transition: all 0.6s ease 0s;
 }
 .paradox {
   background-color:rgb(0, 0, 0);

@@ -1,30 +1,20 @@
 `use strict`
 
-
-window.scrollBy({
-            top: 10,
-            behavior: 'smooth'
-        });
-
-
-
-
 window.addEventListener('load',function (params) {
   document.body.style.overflow = `hidden`;
   /*window.scrollTo(0, 0);*/
-  verticalScrolling();
+  
   setTimeout(() => {
     const preloader = document.querySelector(`#pagePreloader`);
     if(!preloader.classList.contains(`done`)) {
       preloader.classList.add(`done`);
       document.querySelector(`body`).style.overflow = ``;
       addAnimItem();
-      animaJS();// анимация библиотека
       scroll();
       animParadox();
     }
   }, 1000);
-  
+  all();
 });
 
 
@@ -257,19 +247,6 @@ class Tvpresentatin {
 
 
 
-/*Скорость скролла при нажатии на ссылку*/
-const smoothLinks = document.querySelectorAll('a[href^="#"]');
-for (let smoothLink of smoothLinks) {
-    smoothLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        const id = smoothLink.getAttribute('href');
-
-        document.querySelector(id).scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    });
-};
 
 
 
@@ -475,68 +452,10 @@ function scroll(params) {
 
 
 
-function animaJS() {
-  anime({
-  targets: '.logo__svg',
-  /*rotate: '90deg',*/
-  duration: 5000
-  });
-};
 
 
 
 
-
-function verticalScrolling(params) {
-
-  
-  window.addEventListener(`scroll`, addScroll);
- 
-
-
- 
-  const properties = { 
-  speed: 0.6,
-  elem: `._verticalScroll2`,
-};
-
-
-   function addScroll() {
-    const offsetTop = offset(document.querySelector(properties.elem)).top;
-    const scrolled = (window.pageYOffset - offsetTop) + window.innerHeight / 2;
-    styleE(scrolled);
-    requestAnimationFrame(addScroll);
-  }
-
-  function styleE(scrolled) {
-    let size = scrolled * properties.speed;
-      if(size < 0) {
-        let a = document.querySelector(properties.elem).style.cssText = `transform: translate(${-size}%, 0px);`;
-      }else {
-         document.querySelector(properties.elem).style.cssText = ``;
-      }
-      
-  }
-
-
-
-  const speed = 0.4; // время работы
-  const target = document.querySelector(`._verticalScroll`);
-  const innerY = window.innerHeight / 2;//расстояние работы
-  window.addEventListener(`scroll`, function(e) {
-    const scrolled = (this.window.pageYOffset - offset(target).top) + innerY;
-    function styleElement() {
-      let size = scrolled * speed;
-      if(size < 0) {
-        let a = target.style.cssText = `transform: translate(${size}%, 0px);`;
-      }else {
-        
-        target.style.cssText = ``;
-      }
-    };
-    requestAnimationFrame(styleElement);
-  });
-};
 
 
 
@@ -559,3 +478,118 @@ var tl = anime({
   loop: true
 });
 };
+
+
+
+
+
+
+function isElementInViewport(el, inCB, outCB, rootMargin) {
+  var margin = rootMargin || '-10%';
+  function handleIntersect(entries, observer) {
+    var entry = entries[0];
+    if (entry.isIntersecting) {
+      if (inCB && typeof inCB === 'function') inCB(el, entry);
+    } else {
+      if (outCB && typeof outCB === 'function') outCB(el, entry);
+    }
+  }
+  var observer = new IntersectionObserver(handleIntersect, {rootMargin: margin});
+  observer.observe(el);
+}
+
+
+
+
+
+function all() {
+
+  let scrollMinimalText = 0.6; 
+  let scrollAvangardlText = 0.6;
+
+  window.addEventListener(`scroll`, sizeScroll);
+  function sizeScroll() {
+    const offsetTop = offset(document.querySelector(`.video-text-el`)).top;
+    const scrolled = (window.pageYOffset - offsetTop) + window.innerHeight / 2; 
+    let size = scrolled * 0.8;
+    sizeScrollMinimal(size);
+    const offsetTop2 = offset(document.querySelector(`.video-text-el1`)).top;
+    const scrolled2 = (window.pageYOffset - offsetTop2) + window.innerHeight / 2;
+    
+    let size2 = scrolled2 * 0.6;
+    
+    sizeScrollAvangarde(size2);
+  };
+  function sizeScrollMinimal(size){
+  animationMinimal.seek(-size+200);
+  }
+
+  function sizeScrollAvangarde(size){
+  animationAvangarde.seek(-size+200);
+  }
+  let animationMinimal = anime({
+    targets: `.video-text-el`,
+    translateX: -200+`%`,
+    easing: `easeInOutSine`,
+    elasticity: 600,
+    autoplay:false,
+    complete: function() {
+        isElementInViewport(document.querySelector(`.video-text-el`));
+      }
+ });
+
+  let animationAvangarde = anime({
+    targets: `.video-text-el1`,
+    translateX: 200+`%`,
+    easing: `easeInOutSine`,
+    elasticity: 600,
+    autoplay:false,
+    complete: function() {
+        isElementInViewport(document.querySelector(`.video-text-el1`));
+      }
+ });
+
+};
+
+
+
+function scrollToElement(el, offset) {
+  const off = offset || 0;
+  const rect = el.getBoundingClientRect();
+  const top = rect.top + off;
+  const animation = anime({
+    targets: [document.body, document.documentElement],
+    scrollTop: top,
+    easing: 'easeInOutSine',
+    duration: 1700
+  });
+};
+
+
+const scrollToGettingheadermusic = document.querySelector('#header__music');
+scrollToGettingheadermusic.addEventListener('click', function(e) {
+  e.preventDefault();
+  scrollToElement(document.querySelector('#music'));
+});
+
+
+
+const options = {
+    threshold: 0
+}
+const callback = function(entries, observer) {
+    entries.forEach(entry => {
+      const {target, isIntersecting, intersectionRatio} = entry;
+      console.log(intersectionRatio);
+      /*
+      if (isIntersecting) {
+        console.log(`hi`);
+      }else {
+        console.log(`no`);
+      }*/
+    })
+};
+const observer = new IntersectionObserver(callback, options);
+
+const target = document.querySelector(`.video-text`);
+observer.observe(target);
