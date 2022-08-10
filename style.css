@@ -230,11 +230,9 @@ footer .footer__menu a {
   background: linear-gradient(#dcd4d1 1%,#000000 3%);
 }
 .information__life {
+  margin-top: -10%;
   color: #6668ac;
-  font-size: 4rem;
-  margin-left: 10%;
-  width: 30%;
-  text-align: center;
+  font-size: 6rem;
   transform: translate(-50%,0);
   opacity: 0;
   transition: all 1s ease 0s;
@@ -245,11 +243,32 @@ footer .footer__menu a {
 }
 .information__p{
   color: var(--main-color-light);
-  margin-left: 10%;
   font-size: 1.4rem;
-  width: 30%;
-  text-align: center;
+  transform: translate(-50%, 0);
+  opacity: 0;
+  transition: all 1.5s ease 0s;
 }
+.information__p._active {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+
+.information__text {
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+  gap: 3%
+}
+
+.information__photo-elem {
+  background-color: var(--blue-color);
+  border-radius: 50px;
+  max-width: 100%;
+  width: auto;
+}
+
+
 
 .svg  {
   transform: scaleY(-1);
@@ -574,3 +593,5 @@ footer .footer__menu a {
 .motion-path circle {
   fill: var(--main-color-light);
 }
+
+

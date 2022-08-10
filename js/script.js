@@ -583,4 +583,15 @@ braille
   targets: '.motion-path .e6',
   translateX: 100,
   easing: `easeInOutSine`
-})
+});
+
+let circle = document.querySelectorAll(`.motion-path .el`);
+
+circle.forEach(e => e.addEventListener(`mousemove`, (e)=>{
+  anime({
+  targets: e.target,
+  r:35,
+  duration: 6500,
+  fill:`#6668ac`,
+  });
+})); 
