@@ -229,10 +229,15 @@ footer .footer__menu a {
   background-color:black;
   background: linear-gradient(#dcd4d1 1%,#000000 3%);
 }
+.information__text-hp {
+  display: flex;
+  flex-direction: column;
+  flex-basis:40%;
+}
 .information__life {
-  margin-top: -10%;
+  margin-top: -8%;
   color: #6668ac;
-  font-size: 6rem;
+  font-size: 7.5rem;
   transform: translate(-50%,0);
   opacity: 0;
   transition: all 1s ease 0s;
@@ -243,7 +248,7 @@ footer .footer__menu a {
 }
 .information__p{
   color: var(--main-color-light);
-  font-size: 1.4rem;
+  font-size: 2rem;
   transform: translate(-50%, 0);
   opacity: 0;
   transition: all 1.5s ease 0s;
@@ -253,19 +258,26 @@ footer .footer__menu a {
   transform: translate(0, 0);
 }
 
-
+.information__braille {
+  color: rgb(92, 92, 92);
+  margin-top: 12%;
+}
 .information__text {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: start;
-  gap: 3%
+  gap: 8%
 }
-
+.information__photo {
+  flex-basis: 26%;
+  
+}
 .information__photo-elem {
   background-color: var(--blue-color);
   border-radius: 50px;
   max-width: 100%;
   width: auto;
+  margin: auto;
 }
 
 

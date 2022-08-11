@@ -585,13 +585,16 @@ braille
   easing: `easeInOutSine`
 });
 
+
+
+
 let circle = document.querySelectorAll(`.motion-path .el`);
 
 circle.forEach(e => e.addEventListener(`mousemove`, (e)=>{
   anime({
   targets: e.target,
   r:35,
-  duration: 6500,
+  duration: 7000,
   fill:`#6668ac`,
   });
 })); 
