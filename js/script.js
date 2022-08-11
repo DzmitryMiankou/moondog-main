@@ -537,7 +537,6 @@ const options = {
 const callback = function(entries, observer) {
     entries.forEach(entry => {
       const {target, isIntersecting, intersectionRatio} = entry;
-      console.log(intersectionRatio);
       /*
       if (isIntersecting) {
         console.log(`hi`);
@@ -590,11 +589,26 @@ braille
 
 let circle = document.querySelectorAll(`.motion-path .el`);
 
-circle.forEach(e => e.addEventListener(`mousemove`, (e)=>{
+circle.forEach(e => e.addEventListener(`mouseover`, (e)=>{
+  mousov(e);
+})); 
+
+
+function mousov(e) {
   anime({
   targets: e.target,
   r:35,
-  duration: 7000,
+  duration: 1500,
   fill:`#6668ac`,
   });
-})); 
+};
+
+
+circle.forEach(e => e.addEventListener(`mouseout`, (e)=>{
+    anime({
+  targets: e.target,
+  r:28,
+  duration: 2500,
+  fill:`#dcd4d1`,
+  });
+  }));
