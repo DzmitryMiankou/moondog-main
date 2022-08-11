@@ -54,6 +54,7 @@ header .header__logo svg {
   width: auto;
   height: auto;
   min-width: 20px;
+  user-select: none;
 }
 .header__text-titel {
   font-size: 8rem;
@@ -146,6 +147,7 @@ header .header__logo svg {
   max-height: 100%;
   object-fit: cover;
   pointer-events: none;
+  user-select: none;
 }
 footer {
   display: flex;
@@ -182,6 +184,7 @@ footer .footer__menu a {
 .footer__logo {
   max-width: 40px;
   margin-left: auto;
+  user-select: none;
 }
 .footer__common {
   display: flex;
@@ -233,29 +236,24 @@ footer .footer__menu a {
   display: flex;
   flex-direction: column;
   flex-basis:40%;
+  transform: translate(-50%, 0);
+  opacity: 0;
+  transition: all 1.5s ease 0s;
+}
+
+.information__text ._active {
+  opacity: 1;
+  transform: translate(0, 0);
 }
 .information__life {
   margin-top: -8%;
   color: #6668ac;
   font-size: 7.5rem;
-  transform: translate(-50%,0);
-  opacity: 0;
-  transition: all 1s ease 0s;
 }
-.information__life._active {
-  opacity: 1;
-  transform: translate(0, 0);
-}
+
 .information__p{
   color: var(--main-color-light);
   font-size: 2rem;
-  transform: translate(-50%, 0);
-  opacity: 0;
-  transition: all 1.5s ease 0s;
-}
-.information__p._active {
-  opacity: 1;
-  transform: translate(0, 0);
 }
 
 .information__braille {
@@ -266,11 +264,10 @@ footer .footer__menu a {
   display: flex;
   justify-content: center;
   align-items: start;
-  gap: 8%
+  gap: 8%;
 }
 .information__photo {
-  flex-basis: 26%;
-  
+  flex-basis: 26%;  
 }
 .information__photo-elem {
   background-color: var(--blue-color);
@@ -278,6 +275,8 @@ footer .footer__menu a {
   max-width: 100%;
   width: auto;
   margin: auto;
+  pointer-events: none;
+  user-select: none;
 }
 
 
@@ -285,6 +284,7 @@ footer .footer__menu a {
 .svg  {
   transform: scaleY(-1);
   pointer-events: none;
+  user-select: none;
 }
 
 
@@ -356,6 +356,7 @@ footer .footer__menu a {
   left: 45vw;
   width: 65px;  
   transition: width 0.3s, height 0.5s, background-color 0.5s, transform 1s;
+  pointer-events: auto;
 }
 .tv-next {
   position: fixed;
@@ -364,6 +365,7 @@ footer .footer__menu a {
   left: 63vw;
   width: 65px;
   transition: width 0.3s, height 0.5s, background-color 0.5s, transform 1s;
+  pointer-events: auto;
 }
 .tv-invert {
   position: fixed;
@@ -373,6 +375,7 @@ footer .footer__menu a {
   width: 65px;
   transform: rotate(180deg);
   transition: width 0.3s, height 0.5s, background-color 0.5s, transform 1s;
+  pointer-events: auto;
 }
 .tv-invert:hover {
   width: 61px;
@@ -576,12 +579,16 @@ footer .footer__menu a {
   opacity: 0;
   transform: translate(0, 2%);
   transition: all 1s ease 0s;
+  pointer-events: none;
+  user-select: none;
 }
 
 .canva__sky._active {
   transform: translate(0, 0);
   opacity: 1;
   transition: all 1s ease 0.5s;
+  pointer-events: none;
+  user-select: none;
 }
 
 .canva__moontext {
@@ -589,15 +596,18 @@ footer .footer__menu a {
   bottom: 0;
   pointer-events: none;
   width: 100%;
+  pointer-events: none;
+  user-select: none;
 }
 .canva__branches {
   position:absolute;
   z-index: 2;
   width: 100%;
+  bottom:0;
+  pointer-events: none;
+  user-select: none;
 }
-._verticalScroll, ._verticalScroll2 {
-  transition: all 0.6s ease 0s;
-}
+
 .paradox {
   background-color:rgb(0, 0, 0);
   z-index: 1;

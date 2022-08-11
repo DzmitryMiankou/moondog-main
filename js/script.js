@@ -462,8 +462,6 @@ function isElementInViewport(el, inCB, outCB, rootMargin) {
 
 function all() {
 
-  let scrollMinimalText = 0.6; 
-  let scrollAvangardlText = 0.6;
 
   window.addEventListener(`scroll`, sizeScroll);
   function sizeScroll() {
@@ -598,7 +596,7 @@ function mousov(e) {
   anime({
   targets: e.target,
   r:35,
-  duration: 1500,
+  duration: 500,
   fill:`#6668ac`,
   });
 };
@@ -608,7 +606,23 @@ circle.forEach(e => e.addEventListener(`mouseout`, (e)=>{
     anime({
   targets: e.target,
   r:28,
-  duration: 2500,
+  duration: 5500,
   fill:`#dcd4d1`,
+  delay:2000
   });
   }));
+
+
+
+
+
+
+
+  function RandArray(array){
+    const rand = Math.random()*array.length | 0;
+    const rValue = array[rand];
+    return rValue;
+}
+const myArray = ['one', 'two', 'three', 'four', 'five', 'six'];
+const rValue = RandArray(myArray);
+console.log(rValue)

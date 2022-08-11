@@ -37,3 +37,12 @@ a {
 div, footer, head, main {
   min-width: 0;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  user-select: none;
+  pointer-events: none;
+}
