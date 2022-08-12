@@ -521,7 +521,6 @@ braille
   easing: `easeInOutSine`
 });
 
-
 const bottomAudio = document.querySelector(`#playMusic`);
 const circle = document.querySelectorAll(`.motion-path .el`);
 const audios = document.querySelectorAll(`.motion__audios-audio`);
@@ -577,10 +576,8 @@ function playMusic() {
 
   if(a == true) {
     rValue.play();
+    a==false
+  }else {
+    rValue.pause();
   } 
 };
-
-
-
-
-
