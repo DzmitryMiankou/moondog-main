@@ -154,6 +154,9 @@ header .header__logo svg {
   user-select: none;
 }
 
+
+
+/*_________________________________________________________________________________*/
 .information {
   position: relative;
   background-color:black;
@@ -191,11 +194,11 @@ header .header__logo svg {
   display: flex;
   justify-content: center;
   align-items: start;
-  gap: 8%;
+  gap: 10%;
+ 
+  margin: auto;
 }
-.information__photo {
-  flex-basis: 26%;  
-}
+
 .information__photo-elem {
   background-color: var(--blue-color);
   border-radius: 50px;
@@ -235,7 +238,7 @@ header .header__logo svg {
   position: absolute;
   font-family: 'Tahoma',  Geneva, Verdana, sans-serif;
   top:20%;
-  left: 50%;
+  left: 47%;
   font-size: 0.7rem;
 }
 
@@ -246,7 +249,6 @@ header .header__logo svg {
 
 .video-wrapper {
   background-color: var(--main-color-light);
-  display: flex;
   flex-direction: column;
   background-image: url(images/bkTV.svg);
   background-repeat: no-repeat;
@@ -264,7 +266,7 @@ header .header__logo svg {
 }
 
 .video-itam {
-  position: fixed;
+  position: absolute;
   top: 5%;
   left: 25%;
   width: auto;
@@ -292,7 +294,7 @@ header .header__logo svg {
 
 
 .tv-icon {
-  position: fixed;
+ position: absolute;
   object-fit: cover;
   top: 39vmax;
   left: 45vw;
@@ -301,7 +303,7 @@ header .header__logo svg {
   pointer-events: auto;
 }
 .tv-next {
-  position: fixed;
+  position: absolute;
   object-fit: cover;
   top: 39vmax;
   left: 63vw;
@@ -310,7 +312,7 @@ header .header__logo svg {
   pointer-events: auto;
 }
 .tv-invert {
-  position: fixed;
+  position: absolute;
   object-fit: cover;
   top: 38.7vmax;
   left: 54vw;

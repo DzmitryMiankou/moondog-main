@@ -533,6 +533,7 @@ function animationBraille() {
         mouseOutStyle(event);
         break;
       case `click`:
+        bottomAudio.innerHTML = `PLAY`;
         a = true;
         break;
     };
@@ -567,7 +568,7 @@ function animationBraille() {
     const rValue = RandArray(myArray);
     if(a == true) {
       rValue.play();
-      a==false
+      a==false;
     }else {
       rValue.pause();
     };
