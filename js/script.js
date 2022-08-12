@@ -567,12 +567,12 @@ circle.forEach(e => e.addEventListener(`mouseout`, (e)=> {
 
 
 
-
+const audios = document.querySelectorAll(`.motion__audios-audio`);
 function RandArray(array) {
   const rand = Math.random()*array.length | 0;
    const rValue = array[rand];
    return rValue;
 };
-const myArray = ['one', 'two', 'three', 'four', 'five', 'six'];
+const myArray = audios;
 const rValue = RandArray(myArray);
 console.log(rValue);
