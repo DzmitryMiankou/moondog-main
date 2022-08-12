@@ -220,7 +220,21 @@ header .header__logo svg {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-
+.wrapper {
+  position: relative;
+}
+#playMusic {
+  background:#000000;
+  color: var(--main-color-light);
+  border: none;
+  cursor: pointer;
+  margin: auto;
+  width: 100%;
+  position: absolute;
+  font-family: 'Tahoma',  Geneva, Verdana, sans-serif;
+  top:20%;
+  font-size: 0.7rem;
+}
 
 
 /*___________________________VIDEO TV________________________________________*/

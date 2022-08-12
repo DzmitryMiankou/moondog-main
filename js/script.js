@@ -534,11 +534,12 @@ braille
 
 
 
-
 let circle = document.querySelectorAll(`.motion-path .el`);
 
 circle.forEach(e => e.addEventListener(`mouseover`, (e)=> {
+  playMusic();
   mousov(e);
+ 
 })); 
 
 
@@ -552,6 +553,10 @@ function mousov(e) {
 };
 
 
+
+
+
+
 circle.forEach(e => e.addEventListener(`mouseout`, (e)=> {
   anime({
     targets: e.target,
@@ -560,14 +565,13 @@ circle.forEach(e => e.addEventListener(`mouseout`, (e)=> {
     fill:`#dcd4d1`,
     delay:2000
     });
+  
 }));
 
 
 
-
-
-
-const audios = document.querySelectorAll(`.motion__audios-audio`);
+function playMusic(params) {
+  const audios = document.querySelectorAll(`.motion__audios-audio`);
 function RandArray(array) {
   const rand = Math.random()*array.length | 0;
    const rValue = array[rand];
@@ -575,4 +579,11 @@ function RandArray(array) {
 };
 const myArray = audios;
 const rValue = RandArray(myArray);
-console.log(rValue);
+
+rValue.play();
+}
+
+
+
+
+
