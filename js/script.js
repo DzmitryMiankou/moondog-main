@@ -424,9 +424,7 @@ function all() {
     easing: `easeInOutSine`,
     elasticity: 600,
     autoplay:false,
-    complete: function() {
-        isElementInViewport(document.querySelector(`.video-text-el`));
-      }
+  
  });
 
   let animationAvangarde = anime({
@@ -435,9 +433,6 @@ function all() {
     easing: `easeInOutSine`,
     elasticity: 600,
     autoplay:false,
-    complete: function() {
-        isElementInViewport(document.querySelector(`.video-text-el1`));
-      }
  });
 };
 
@@ -487,6 +482,15 @@ observer.observe(target);
 
 
 
+/*______________________________________________________
+____________________________________________________________________
+___________________________________________________________________________________
+__________________ANIMATION CIRCLE______________________________________________________________*/
+
+
+
+
+
 let braille = anime.timeline({
   targets: '.motion-path .el',
   delay: function(el, i) { return i * 200 },
@@ -518,55 +522,63 @@ braille
 });
 
 
+const bottomAudio = document.querySelector(`#playMusic`);
+const circle = document.querySelectorAll(`.motion-path .el`);
+const audios = document.querySelectorAll(`.motion__audios-audio`);
 
-let circle = document.querySelectorAll(`.motion-path .el`);
+bottomAudio.addEventListener(`click`, handler);
+circle.forEach(e => e.addEventListener(`mouseout`, handler));
+circle.forEach(e => e.addEventListener(`mouseover`, handler)); 
 
-circle.forEach(e => e.addEventListener(`mouseover`, (e)=> {
-  playMusic();
-  mousov(e);
- 
-})); 
+let a;
 
+function  handler (event) {
+  switch(event.type) {
+    case `mouseover`:
+      playMusic();
+      mouseOverStyle(event);
+      break;
+    case `mouseout`:
+      mouseOutStyle(event);
+      break;
+    case `click`:
+      a = true;
+      break;
+  };
+};
 
-function mousov(e) {
+function mouseOverStyle(event) {
   anime({
-    targets: e.target,
+    targets: event.target,
     r:35,
     duration: 500,
     fill:`#6668ac`
   });
 };
 
-
-
-
-
-
-circle.forEach(e => e.addEventListener(`mouseout`, (e)=> {
-  anime({
-    targets: e.target,
+function mouseOutStyle(event) {
+    anime({
+    targets: event.target,
     r:28,
     duration: 5500,
     fill:`#dcd4d1`,
     delay:2000
     });
-  
-}));
-
-
-
-function playMusic(params) {
-  const audios = document.querySelectorAll(`.motion__audios-audio`);
-function RandArray(array) {
-  const rand = Math.random()*array.length | 0;
-   const rValue = array[rand];
-   return rValue;
 };
-const myArray = audios;
-const rValue = RandArray(myArray);
 
-rValue.play();
-}
+function playMusic() {
+  function RandArray(array) {
+    const rand = Math.random()*array.length | 0;
+    const rValue = array[rand];
+    return rValue;
+  };
+  const myArray = audios;
+  const rValue = RandArray(myArray);
+
+  if(a == true) {
+    rValue.play();
+  } 
+};
 
 
 
