@@ -19,61 +19,11 @@ window.addEventListener('load',function (params) {
 
 
 
-const footerButtons = document.querySelector(`.footer__main`);
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const getfilter = new CreatTooltip(footerButtons);
-  getfilter.appendElement();
-  getfilter.endAppendElement();
   init();
 });
-
-/*Всплывающие подсказки*/
-
-let tooltipElem;
-
-class CreatTooltip {
-  constructor (a) {
-    this.a = a;
-  }
-  appendElement() {
-    this.a.onmouseover = (event) => {
-      let target = event.target;
-
-      let tooltipHtml = target.dataset.tooltip;
-      if (!tooltipHtml) return;
-
-      tooltipElem = document.createElement('div');
-      tooltipElem.className = 'tooltip';
-      tooltipElem.innerHTML = tooltipHtml;
-      document.body.append(tooltipElem);
-      
-      let coords = target.getBoundingClientRect();
-      let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
-      if (left < 0) left = 0;
-
-      let top = coords.top - tooltipElem.offsetHeight - 5;
-  
-      tooltipElem.style.left = left + 'px';
-      tooltipElem.style.top = top + 'px';
-    }
-  }
-  endAppendElement() {
-    document.onmouseout = (e) => {
-      if (tooltipElem) {
-        tooltipElem.remove();
-        tooltipElem = null;
-      }
-    };
-  }
-};
-    
-
-
- 
-
-
 
 
 
@@ -587,30 +537,30 @@ braille
 
 let circle = document.querySelectorAll(`.motion-path .el`);
 
-circle.forEach(e => e.addEventListener(`mouseover`, (e)=>{
+circle.forEach(e => e.addEventListener(`mouseover`, (e)=> {
   mousov(e);
 })); 
 
 
 function mousov(e) {
   anime({
-  targets: e.target,
-  r:35,
-  duration: 500,
-  fill:`#6668ac`,
+    targets: e.target,
+    r:35,
+    duration: 500,
+    fill:`#6668ac`
   });
 };
 
 
-circle.forEach(e => e.addEventListener(`mouseout`, (e)=>{
-    anime({
-  targets: e.target,
-  r:28,
-  duration: 5500,
-  fill:`#dcd4d1`,
-  delay:2000
-  });
-  }));
+circle.forEach(e => e.addEventListener(`mouseout`, (e)=> {
+  anime({
+    targets: e.target,
+    r:28,
+    duration: 5500,
+    fill:`#dcd4d1`,
+    delay:2000
+    });
+}));
 
 
 
@@ -618,11 +568,11 @@ circle.forEach(e => e.addEventListener(`mouseout`, (e)=>{
 
 
 
-  function RandArray(array){
-    const rand = Math.random()*array.length | 0;
-    const rValue = array[rand];
-    return rValue;
-}
+function RandArray(array) {
+  const rand = Math.random()*array.length | 0;
+   const rValue = array[rand];
+   return rValue;
+};
 const myArray = ['one', 'two', 'three', 'four', 'five', 'six'];
 const rValue = RandArray(myArray);
-console.log(rValue)
+console.log(rValue);

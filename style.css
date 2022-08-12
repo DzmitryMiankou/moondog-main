@@ -13,7 +13,7 @@
   box-sizing: inherit;
 }
 /*Анимация*/
-
+/*_______________________________________HEADER_____________________________________________*/
 body {
   display: grid;
   grid-template-rows: repeat(6, auto) 60px;
@@ -101,6 +101,10 @@ header .header__logo svg {
   background-size: contain;
   transition: 0.3s;
 }
+
+
+/*___________________________MAIN biography_____________________________________________*/
+
 .biography {
   background-color: var(--main-color-light);
   display: flex;
@@ -149,84 +153,7 @@ header .header__logo svg {
   pointer-events: none;
   user-select: none;
 }
-footer {
-  display: flex;
-  background-image: url("images/6.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: scroll;
-  z-index: 2;
-  box-shadow: var(--main-color) 0 0 1em;
-}
-.footer__main {
-  width: 80%;
-  margin: auto;
-  align-items: center;
-  display: flex;
-  gap: 15%;
-}
-footer .footer__menu {
-  display: flex;
-  gap: 1em;
-  list-style-type: none;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-}
-footer .footer__menu a {
-  color: var(--main-color-light);
-}
-.footer__copir,
-.footer__communiti {
-  color: var(--main-color-light);
-  font-size: 1rem;
-}
-.footer__logo {
-  max-width: 40px;
-  margin-left: auto;
-  user-select: none;
-}
-.footer__common {
-  display: flex;
-  align-items: center;
-  margin: auto;
-  gap: 0.5em;
-}
-.footer__logo:hover {
-  background-color: rgba(255, 255, 255, 0.384);
-  border-radius: 40%;
-  transition: 1s;
-}
-.footer__logo:active {
-  background-color: #6668acc7;
-  border-radius: 50%;
-  transition: 0s;
-}
-.footer-linc {
-  margin-left: auto;
-}
-.footer__menu-svg:hover {
-  background-color: rgba(255, 255, 255, 0.384);
-  border-radius: 40%;
-  transition: 1s;
-}
-.footer__menu-svg:active {
-  background-color: #6668acc7;
-  border-radius: 50%;
-  transition: 0s;
-}
-.tooltip {
-  position: fixed;
-  padding: 0.8% 2%;
-  border: none;
-  border-radius: 55% 45% 70% 30% / 100% 100% 0% 0%;
-  text-align: center;
-  color: rgb(255, 255, 255);
-  background: #6668ac;
-  z-index: 1;
-  font-size: 0.9rem;
-  box-shadow: 5px -5px 4px black;
-}
+
 .information {
   position: relative;
   background-color:black;
@@ -279,8 +206,6 @@ footer .footer__menu a {
   user-select: none;
 }
 
-
-
 .svg  {
   transform: scaleY(-1);
   pointer-events: none;
@@ -298,7 +223,7 @@ footer .footer__menu a {
 
 
 
-/*Часть с видеоматериалами*/
+/*___________________________VIDEO TV________________________________________*/
 
 
 
@@ -405,9 +330,156 @@ footer .footer__menu a {
 }
 
 
-/*Часть с анимацией css*/
+
+.canva {
+  position: relative;
+  background-color: rgb(0, 0, 0);
+  z-index: 1;
+  height: 800px;
+  overflow: hidden;
+}
+
+.svggg {
+  position: absolute;
+  bottom: 0;
+  pointer-events: none;
+
+}
+
+.parallax__container {
+  z-index: 4;
+}
+
+.canva__sky {
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(0, 2%);
+  transition: all 1s ease 0s;
+  pointer-events: none;
+  user-select: none;
+}
+
+.canva__sky._active {
+  transform: translate(0, 0);
+  opacity: 1;
+  transition: all 1s ease 0.5s;
+  pointer-events: none;
+  user-select: none;
+}
+
+.canva__moontext {
+  position: absolute;
+  bottom: 0;
+  pointer-events: none;
+  width: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+
+.canva__branches {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  bottom: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.paradox {
+  background-color: rgb(0, 0, 0);
+  z-index: 1;
+}
+
+.motion-path circle {
+  fill: var(--main-color-light);
+}
+
+/*________________________________FOOTER_____________________________________*/
+
+footer {
+  display: flex;
+  background-image: url("images/6.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+  z-index: 2;
+  box-shadow: var(--main-color) 0 0 1em;
+}
+
+.footer__main {
+  width: 80%;
+  margin: auto;
+  align-items: center;
+  display: flex;
+  gap: 15%;
+}
+
+footer .footer__menu {
+  display: flex;
+  gap: 1em;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+footer .footer__menu a {
+  color: var(--main-color-light);
+}
+
+.footer__copir,
+.footer__communiti {
+  color: var(--main-color-light);
+  font-size: 1rem;
+}
+
+.footer__logo {
+  max-width: 40px;
+  margin-left: auto;
+  user-select: none;
+}
+
+.footer__common {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  gap: 0.5em;
+}
+
+.footer__logo:hover {
+  background-color: rgba(255, 255, 255, 0.384);
+  border-radius: 40%;
+  transition: 1s;
+}
+
+.footer__logo:active {
+  background-color: #6668acc7;
+  border-radius: 50%;
+  transition: 0s;
+}
+
+.footer-linc {
+  margin-left: auto;
+}
+
+.footer__menu-svg:hover {
+  background-color: rgba(255, 255, 255, 0.384);
+  border-radius: 40%;
+  transition: 1s;
+}
+
+.footer__menu-svg:active {
+  background-color: #6668acc7;
+  border-radius: 50%;
+  transition: 0s;
+}
 
 
+
+
+/*________________ANIMATION CSS KEYFRAMES________________________________*/
 
 
 #myImg {
@@ -445,7 +517,7 @@ footer .footer__menu a {
 
 
 
-/*Адаптив*/
+/*___________________________ADAPTIVE MEDIA______________________________*/
 
 @media (max-width: 3000px) {
   .video-itam {
@@ -550,70 +622,5 @@ footer .footer__menu a {
   }
 }
 
-
-
-
-
-.canva {
-  position: relative;
-  background-color: rgb(0, 0, 0);
-  z-index: 1;
-  height: 800px;
-  overflow: hidden;
-}
-.svggg {
-  position: absolute;
-  bottom:0;
-  pointer-events: none;
-  
-}
-
-.parallax__container {
- z-index: 4;
-}
-
-.canva__sky {
-  position: absolute;
-  top: 0;
-  pointer-events: none;
-  opacity: 0;
-  transform: translate(0, 2%);
-  transition: all 1s ease 0s;
-  pointer-events: none;
-  user-select: none;
-}
-
-.canva__sky._active {
-  transform: translate(0, 0);
-  opacity: 1;
-  transition: all 1s ease 0.5s;
-  pointer-events: none;
-  user-select: none;
-}
-
-.canva__moontext {
-  position: absolute;
-  bottom: 0;
-  pointer-events: none;
-  width: 100%;
-  pointer-events: none;
-  user-select: none;
-}
-.canva__branches {
-  position:absolute;
-  z-index: 2;
-  width: 100%;
-  bottom:0;
-  pointer-events: none;
-  user-select: none;
-}
-
-.paradox {
-  background-color:rgb(0, 0, 0);
-  z-index: 1;
-}
-.motion-path circle {
-  fill: var(--main-color-light);
-}
 
 
