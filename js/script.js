@@ -11,10 +11,11 @@ window.addEventListener('load',function (params) {
       document.querySelector(`body`).style.overflow = ``;
       addAnimItem();
       scroll();
-      animParadox();
+      
     }
   }, 1000);
   all();
+  animationBraille();
 });
 
 
@@ -198,10 +199,6 @@ canva.addEventListener('mousemove', function(event){
   mouse.x = event.x;
   mouse.y = event.y;
 });
-canva.addEventListener('touchmove', function(event){
-  mouse.x = event.x;
-  mouse.y = event.y;
-});
 
 
 class Particles {
@@ -358,16 +355,6 @@ function scroll(params) {
 
 
 
-
-
-
-
-
-
-
-
-
-
 function offset(el) {
   const rec = el.getBoundingClientRect(),
   scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, //Safari  не  видит scrrollL,T. Эта функциия добавляет кроссбраузерности
@@ -375,17 +362,6 @@ function offset(el) {
   return {top: rec.top + scrollTop, left: rec.left + scrollLeft};
 };
 
-function animParadox() {
-var tl = anime({
-  targets: ".elem .paradox__svg-path",
-  strokeDashoffset: [anime.setDashoffset, 0],
-  easing: 'easeInOutSine',
-  duration: 2500,
-  delay: function(el, i) { return i * 250 },
-  direction: 'alternate',
-  loop: true
-});
-};
 
 
 
@@ -459,24 +435,40 @@ scrollToGettingheadermusic.addEventListener('click', function(e) {
 
 
 
+
+
+
+
 const options = {
     threshold: 0,
 }
 const callback = function(entries, observer) {
     entries.forEach(entry => {
       const {target, isIntersecting, intersectionRatio} = entry;
-      /*
       if (isIntersecting) {
-        console.log(`hi`);
+        animParadox();
       }else {
-        console.log(`no`);
-      }*/
+        return;
+      }
     })
 };
 const observer = new IntersectionObserver(callback, options);
 
-const target = document.querySelector(`.video-text`);
+const target = document.querySelector(`.paradox__text`);
 observer.observe(target);
+
+
+function animParadox() {
+var tl = anime({
+  targets: ".elem .paradox__svg-path",
+  strokeDashoffset: [anime.setDashoffset, 0],
+  easing: 'easeInOutSine',
+  duration: 2500,
+  delay: function(el, i) { return i * 250 },
+  direction: 'alternate',
+  loop: true
+});
+};
 
 
 
@@ -485,99 +477,99 @@ observer.observe(target);
 /*______________________________________________________
 ____________________________________________________________________
 ___________________________________________________________________________________
-__________________ANIMATION CIRCLE______________________________________________________________*/
+__________________ANIMATION CIRCLE___WITH ANIMEjs________________________________________________
+_________AND CONTROL AUDIO___________________________________________________________________________________*/
 
 
 
-
-
-let braille = anime.timeline({
-  targets: '.motion-path .el',
-  delay: function(el, i) { return i * 200 },
-  duration: 500,
-  loop: true,
-  direction: 'alternate',
-});
-
-braille
-.add({
-  targets: '.motion-path .e1',
-  translateX: -100,
-  easing: 'easeInOutSine',
-})
-.add({
-  targets: '.motion-path .e4',
-  translateY: -100,
-  easing: 'easeInOutSine',
-})
-.add({
-  targets: '.motion-path .e3',
-  translateY: 100,
-  easing: `easeInOutSine`
-})
-.add({
-  targets: '.motion-path .e6',
-  translateX: 100,
-  easing: `easeInOutSine`
-});
-
-const bottomAudio = document.querySelector(`#playMusic`);
-const circle = document.querySelectorAll(`.motion-path .el`);
-const audios = document.querySelectorAll(`.motion__audios-audio`);
-
-bottomAudio.addEventListener(`click`, handler);
-circle.forEach(e => e.addEventListener(`mouseout`, handler));
-circle.forEach(e => e.addEventListener(`mouseover`, handler)); 
-
-let a;
-
-function  handler (event) {
-  switch(event.type) {
-    case `mouseover`:
-      playMusic();
-      mouseOverStyle(event);
-      break;
-    case `mouseout`:
-      mouseOutStyle(event);
-      break;
-    case `click`:
-      a = true;
-      break;
-  };
-};
-
-function mouseOverStyle(event) {
-  anime({
-    targets: event.target,
-    r:35,
+function animationBraille() {
+  let braille = anime.timeline({
+    targets: '.motion-path .el',
+    delay: function(el, i) { return i * 200 },
     duration: 500,
-    fill:`#6668ac`
+    loop: true,
+    direction: 'alternate',
   });
-};
 
-function mouseOutStyle(event) {
-    anime({
-    targets: event.target,
-    r:28,
-    duration: 5500,
-    fill:`#dcd4d1`,
-    delay:2000
-    });
-};
+  braille
+  .add({
+    targets: '.motion-path .e1',
+    translateX: -100,
+    easing: 'easeInOutSine',
+  })
+  .add({
+    targets: '.motion-path .e4',
+    translateY: -100,
+    easing: 'easeInOutSine',
+  })
+  .add({
+    targets: '.motion-path .e3',
+    translateY: 100,
+    easing: `easeInOutSine`
+  })
+  .add({
+    targets: '.motion-path .e6',
+    translateX: 100,
+    easing: `easeInOutSine`
+  });
 
-function playMusic() {
-  function RandArray(array) {
-    const rand = Math.random()*array.length | 0;
-    const rValue = array[rand];
-    return rValue;
+  const bottomAudio = document.querySelector(`#playMusic`);
+  const circle = document.querySelectorAll(`.motion-path .el`);
+  const audios = document.querySelectorAll(`.motion__audios-audio`);
+
+  bottomAudio.addEventListener(`click`, handler);
+  circle.forEach(e => e.addEventListener(`mouseout`, handler));
+  circle.forEach(e => e.addEventListener(`mouseover`, handler)); 
+
+  let a;
+
+  function  handler (event) {
+    switch(event.type) {
+      case `mouseover`:
+        playMusic();
+        mouseOverStyle(event);
+        break;
+      case `mouseout`:
+        mouseOutStyle(event);
+        break;
+      case `click`:
+        a = true;
+        break;
+    };
   };
-  const myArray = audios;
-  const rValue = RandArray(myArray);
 
-  if(a == true) {
-    rValue.play();
-    a==false
-  }else {
-    rValue.pause();
-  } 
+  function mouseOverStyle(event) {
+    anime({
+      targets: event.target,
+      r:35,
+      duration: 500,
+      fill:`#6668ac`
+    });
+  };
+
+  function mouseOutStyle(event) {
+    anime({
+      targets: event.target,
+      r:28,
+      duration: 5500,
+      fill:`#dcd4d1`,
+      delay:2000
+    });
+  };
+
+  function playMusic() {
+    function RandArray(array) {
+      const rand = Math.random()*array.length | 0;
+      const rValue = array[rand];
+      return rValue;
+    };
+    const myArray = audios;
+    const rValue = RandArray(myArray);
+    if(a == true) {
+      rValue.play();
+      a==false
+    }else {
+      rValue.pause();
+    };
+  };
 };

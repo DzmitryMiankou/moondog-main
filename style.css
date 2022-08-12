@@ -223,16 +223,19 @@ header .header__logo svg {
 .wrapper {
   position: relative;
 }
+.wrapper__button {
+  width: 100%;
+}
 #playMusic {
   background:#000000;
   color: var(--main-color-light);
   border: none;
   cursor: pointer;
-  margin: auto;
-  width: 100%;
+  width: 65px;
   position: absolute;
   font-family: 'Tahoma',  Geneva, Verdana, sans-serif;
   top:20%;
+  left: 50%;
   font-size: 0.7rem;
 }
 
