@@ -11,7 +11,6 @@ window.addEventListener('load',function (params) {
       document.querySelector(`body`).style.overflow = ``;
       addAnimItem();
       scroll();
-      
     }
   }, 1000);
   all();
