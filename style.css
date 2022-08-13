@@ -194,9 +194,7 @@ header .header__logo svg {
   display: flex;
   justify-content: center;
   align-items: start;
-  gap: 10%;
- 
-  margin: auto;
+  gap: 14%;
 }
 
 .information__photo-elem {
