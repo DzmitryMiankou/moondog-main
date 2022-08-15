@@ -546,6 +546,39 @@ let paradox = anime({
 
 
 
+function bioFix(params) {
+  function sa(params) {
+    const arrText = document.querySelectorAll(`.header__menu-t`);
+    const target = document.querySelector(`.biography`);
+    fixedPositionTextAmim(arrText[0], target)
+  };
+  sa();
+  function sa2(params) {
+    const arrText = document.querySelectorAll(`.header__menu-t`);
+    const target = document.querySelector(`.video-itam`);
+    fixedPositionTextAmim(arrText[1], target)
+  };
+  sa2();
+   sa();
+  function sa3(params) {
+    const arrText = document.querySelectorAll(`.header__menu-t`);
+    const target = document.querySelector(`.paradox`);
+    fixedPositionTextAmim(arrText[2], target)
+  };
+  sa3();
+};
+
+function fixedPositionTextAmim(arr, target) {
+  let a = arr;
+  let b = target;
+  function play() {
+    a.style.cssText=`color:#6668ac;`;
+  }
+  function pause() {
+    a.style.cssText=``;
+  }
+  isElementInViewport(b, play, pause);
+};
 
 
 
@@ -581,4 +614,5 @@ function initCode() {
   const tv = new Tvpresentatin(content);// Запуск кода управлением "TV"
   tv.clickInput();
   tv.scrollTv();
+  bioFix();
 };
