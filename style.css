@@ -396,6 +396,14 @@ header {
   fill: var(--main-color-light);
 }
 
+.paradox {
+  position: relative;
+  height: 1000px;
+}
+.line {
+  position: absolute;
+  top:0;
+}
 /*________________________________FOOTER_____________________________________*/
 
 footer {
