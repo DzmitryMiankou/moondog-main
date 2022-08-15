@@ -189,6 +189,7 @@ header .header__logo svg {
 .information__braille {
   color: rgb(92, 92, 92);
   margin-top: 14%;
+  user-select: none;
 }
 .information__text {
   display: flex;
@@ -238,6 +239,7 @@ header .header__logo svg {
   top:20%;
   left: 47%;
   font-size: 0.7rem;
+  user-select: none;
 }
 
 
