@@ -8,6 +8,7 @@ window.addEventListener('load',function () {
       preloader.classList.add(`done`);
       document.querySelector(`body`).style.overflow = ``;
     }
+    addAnimItem();//Запуск анимации элементво при видимости
   }, 1000);
   initCode();
 });
@@ -512,6 +513,8 @@ window.addEventListener('load', function(e) {
 
 
 
+
+
 /*______________________________________________
 ____________________________observer_______________________
 ___________________________________________________________________
@@ -535,6 +538,7 @@ const observer = new IntersectionObserver(callback, options);
 
 const target = document.querySelector(`.paradox__text`);
 observer.observe(target);
+
 
 
 function animParadox() {
@@ -566,7 +570,7 @@ function offset(el) {
 function initCode() {
   animationBraille();//Запуск анимации кружков
   scrollElem();// Скролл текста
-  addAnimItem();//Запуск анимации элементво при видимости
+
   animMouse();// Движение за мышью
   init();// запуск анимации Canvas
   const tv = new Tvpresentatin(content);// Запуск кода управлением "TV"

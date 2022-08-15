@@ -24,21 +24,15 @@ header {
   z-index: 4;
   display: grid;
   background-color: var(--main-color);
-  grid-template-rows: 3fr 60px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  grid-template-rows: 3fr 0px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
-header .str0 {
-  stroke: none;
-  stroke-width: 140;
-  stroke-miterlimit: 22.9256;
-}
-header .logo__svg-path {
-  fill: var(--logo-color-white);
-}
+
 .header__logo img {
   width: 100%;
-  max-height: 100%;
-  object-fit: cover;
+  max-height: 100%; 
+  pointer-events: none;
+    user-select: none;
 }
 .header__logo {
   display: flex;
@@ -50,11 +44,18 @@ header .logo__svg-path {
   position: absolute;
   display: flex;
 }
-header .header__logo svg {
-  width: auto;
-  height: auto;
-  min-width: 20px;
-  user-select: none;
+.header__fixed {
+  display: flex;
+  gap:50%;
+  justify-content:space-around;
+}
+.header__fixed p {
+  color: var(--main-color-light);
+  text-align: center;
+}
+.header__logo p {
+  color: var(--main-color-light);
+  text-align: center;
 }
 .header__text-titel {
   font-size: 8rem;
@@ -73,33 +74,13 @@ header .header__logo svg {
   background-color: var(--main-color);
   z-index: 1;
   box-shadow: 0 0 0.5em 0em var(--main-color);
-  justify-content: center;
-  align-items: center;
-}
-.header__menu nav {
-  width: 80%;
-}
-.header__menu ul {
-  display: flex;
-  list-style-type: none;
-  justify-content: space-between;
-  margin: auto;
-}
-.header__menu a {
+  width: 100%;
+  position: fixed;
+  height: 60px;
   color: var(--main-color-light);
-  font-size: 2rem;
-  padding: 0.5em 0;
-  background-image: url("images/3.svg");
-  background-repeat: no-repeat;
-  background-position: 0 5em;
-  background-size: 0;
-}
-.header__menu a:hover {
-  background-image: url("images/3.svg");
-  background-repeat: no-repeat;
-  background-position: 0 1.3em;
-  background-size: contain;
-  transition: 0.3s;
+  justify-content: space-around;
+  align-items: center;
+  user-select: none;
 }
 
 
@@ -593,24 +574,12 @@ footer .footer__menu a {
     background-repeat: no-repeat;
     background-size: cover;
   }
-  header .logo {
-    font-size: 4rem;
-    margin-bottom: 6%;
-  }
-  .header__menu {
-    position: relative;
-    visibility: hidden;
-    bottom: 140%;
-  }
+ 
+
   .header__text h1 {
     font-size: 2rem;
   }
-  .header__menu ul {
-    flex-flow: column;
-    text-align: center;
-    visibility: visible;
-    margin-top: 5%;
-  }
+
   header {
     height: 300px;
   }
