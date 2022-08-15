@@ -32,7 +32,7 @@ header {
   width: 100%;
   max-height: 100%; 
   pointer-events: none;
-    user-select: none;
+  user-select: none;
 }
 .header__logo {
   display: flex;
@@ -526,18 +526,12 @@ footer .footer__menu a {
 }
 @media (max-width: 1200px) {
  
-  .header__menu a {
-    font-size: 1.7rem;
-  }
   .header__text h1 {
     font-size: 6rem;
   }
   .biography .biography__text,
   .biography__text2 {
     font-size: 1.4rem;
-  }
-  header .header__logo svg {
-    max-width: 150px;
   }
   .footer__copir,
   .footer__communiti {
@@ -561,39 +555,14 @@ footer .footer__menu a {
   .information h2 {
     font-size: 3rem;
   }
-  .slider__item img {
-    width: 100%;
-      max-height: 100%;
-      object-fit: cover;
-  }
-  .reviews__item::before, .reviews__item::after, .information::after {
-    display:none;
-  }
-  header {
-    background: url("images/backgr.header.min.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
- 
-
   .header__text h1 {
     font-size: 2rem;
   }
 
   header {
-    height: 300px;
-  }
-  header .header__logo svg {
-    width: auto;
-    height: auto;
-    max-width: 50px;
-  }
-  .header__logo {
     height: 200px;
   }
-  .header__logo img {
-    display: none;
-  }
+
   .biography__text strong {
     white-space: pre-wrap;
   }

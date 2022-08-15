@@ -521,28 +521,11 @@ ___________________________________________________________________
 ______________________________________________________________________________*/
 
 
-const options = {
-    threshold: 0,
-}
-const callback = function(entries, observer) {
-    entries.forEach(entry => {
-      const {target, isIntersecting, intersectionRatio} = entry;
-      if (isIntersecting) {
-        animParadox();
-      }else {
-        return;
-      }
-    })
-};
-const observer = new IntersectionObserver(callback, options);
-
-const target = document.querySelector(`.paradox__text`);
-observer.observe(target);
-
 
 
 function animParadox() {
-var tl = anime({
+const target = document.querySelector(`.elem .paradox__svg-path`);
+let paradox = anime({
   targets: ".elem .paradox__svg-path",
   strokeDashoffset: [anime.setDashoffset, 0],
   easing: 'easeInOutSine',
@@ -551,6 +534,13 @@ var tl = anime({
   direction: 'alternate',
   loop: false
 });
+  function play() {
+    paradox.play();
+  }
+  function pause() {
+    paradox.pause();
+  }
+  isElementInViewport(target, play, pause);
 };
 
 
@@ -558,6 +548,21 @@ var tl = anime({
 
 
 
+
+/*Функция проверки наличия объекта в зоне видимости */
+function isElementInViewport(el, inCB, outCB, rootMargin) {
+  const margin = rootMargin || '-10%';
+  function handleIntersect(entries, observer) {
+    const entry = entries[0];
+    if (entry.isIntersecting) {
+      if (inCB && typeof inCB === 'function') inCB(el, entry);
+    } else {
+      if (outCB && typeof outCB === 'function') outCB(el, entry);
+    }
+  }
+  const observer = new IntersectionObserver(handleIntersect, {rootMargin: margin});
+  observer.observe(el);
+}
 
 function offset(el) {
   const rec = el.getBoundingClientRect(),
@@ -570,9 +575,9 @@ function offset(el) {
 function initCode() {
   animationBraille();//Запуск анимации кружков
   scrollElem();// Скролл текста
-
   animMouse();// Движение за мышью
   init();// запуск анимации Canvas
+  animParadox();
   const tv = new Tvpresentatin(content);// Запуск кода управлением "TV"
   tv.clickInput();
   tv.scrollTv();
