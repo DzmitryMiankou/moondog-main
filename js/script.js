@@ -545,7 +545,7 @@ var tl = anime({
   duration: 2500,
   delay: function(el, i) { return i * 250 },
   direction: 'alternate',
-  loop: true
+  loop: false
 });
 };
 
