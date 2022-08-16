@@ -413,8 +413,12 @@ header {
 .paradox__glass, .paradox__reich {
   max-width: 100%;
 }
-.container__glass p, .container__reich p {
-  text-align: center;
+.container__glass p,
+.container__reich p {
+  text-align: justify;
+}
+.container__glass p::first-letter, .container__reich p::first-letter {
+ color: #6668ac;
 }
 .container__glass-glass, .container__reich-reich {
   font-size: 3rem;
@@ -428,7 +432,27 @@ header {
 .container__reich {
   margin-left: auto;
 }
-
+.container__glass-anim {
+  color: #6668ac49;
+  font-size: 1.5vw;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  letter-spacing: 6px;
+  line-height: 1.2;
+  margin: auto;
+  position: absolute;
+  left:40%;
+  width: 70%;
+  top:10%;
+}
+.container__gglass {
+  position: relative;
+  display: flex; 
+  margin-left: 5%;
+}
 
 /*________________________________FOOTER_____________________________________*/
 
