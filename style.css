@@ -341,7 +341,7 @@ header {
 
 .svggg {
   position: absolute;
-  bottom: 0;
+ top: 0;
   pointer-events: none;
 
 }
@@ -349,43 +349,28 @@ header {
 .parallax__container {
   z-index: 4;
 }
-
-.canva__sky {
+.containerp__text {
   position: absolute;
-  top: 0;
-  pointer-events: none;
-  opacity: 0;
-  transform: translate(0, 2%);
-  transition: all 1s ease 0s;
-  pointer-events: none;
-  user-select: none;
+  left: 10%;
+  top: 40%;
+  color: var(--main-color-light);
 }
 
-.canva__sky._active {
-  transform: translate(0, 0);
-  opacity: 1;
-  transition: all 1s ease 0.5s;
-  pointer-events: none;
-  user-select: none;
+.canva__text {
+  font-weight: 900;
+  font-size: 4vw;  
+  text-transform: uppercase;
 }
 
-.canva__moontext {
-  position: absolute;
-  bottom: 0;
-  pointer-events: none;
-  width: 100%;
-  pointer-events: none;
-  user-select: none;
+.containerp__text p {
+  font-size: 1.7rem;
+  width: 50%;
+  text-align: center;
+  margin: auto;
+  margin-left: 19%;
+  margin-top: 5%;
 }
 
-.canva__branches {
-  position: absolute;
-  z-index: 2;
-  width: 100%;
-  bottom: 0;
-  pointer-events: none;
-  user-select: none;
-}
 
 
 .motion-path circle {
@@ -418,6 +403,7 @@ header {
 .container__glass p,
 .container__reich p {
   text-align: justify;
+  z-index: 3;
 }
 .container__glass p::first-letter, .container__reich p::first-letter {
  color: #6668ac;

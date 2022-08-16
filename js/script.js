@@ -255,7 +255,7 @@ const properties = { // свойства объектов
   bgColor: `rgba(0, 0, 0, 0.08)`,
   particlesColor: `#dcd4d1`,
   particlesRadius: 2,
-  particlesCount: 60,
+  particlesCount: 20,
   particlesMaxV: 0.1,
   particlesLife: 70,
 };
@@ -390,53 +390,6 @@ function addAnimItem(params) {
   };
 };
 
-  
-/*________________________________Anime mouse__________________
-_________________________________________________________________________
-__________________________________________________________________________________________ */
-
-function animMouse() {
-
-  const parallax = document.querySelector(`.canva`);
-   const container = document.querySelector(`.parallax__container`);
-   const moonText = document.querySelector(`.canva__moontext`);
-  if(parallax) {
-   
-
-    const moonText = document.querySelector(`.canva__moontext`);
-
-    const forText = 6;
-    const speed = 0.05;
-
-    let positionX = 0;
-    let positionY = 0;
-    let coordXprocent = 0;
-    let coordYprocent = 0;
-
-  function setMausParallaxStyle() {
-    const distX = coordXprocent - positionX;
-    const distY = coordYprocent - positionY;
-
-    positionX = positionX + (distX * speed);
-    positionY = positionY + (distY * speed);
-    let a =moonText.style.cssText = `transform: translate(${positionX / forText}%,${positionX / -28}%);`;
-    requestAnimationFrame(setMausParallaxStyle);
-  }
-    setMausParallaxStyle();
-    parallax.addEventListener(`mousemove`, function (e) {
-      
-      const parallaxHight = parallax.offsetHeight;
-      const parallaxWidth = parallax.offsetWidth;
-
-      const coordX = e.pageX - parallaxWidth / 2;
-      const coordY = e.pageY - parallaxHight / 2;
-
-
-      coordXprocent = coordX / parallaxWidth * 100;
-      coordYprocent = coordY / parallaxHight * 100;
-    });
-  };
-};
 
 
 /*____________________________________
@@ -522,26 +475,23 @@ ______________________________________________________________________________*/
 
 
 
-/*
-function animParadox() {
-const target = document.querySelector(`.elem .paradox__svg-path`);
-let paradox = anime({
-  targets: ".elem .paradox__svg-path",
-  strokeDashoffset: [anime.setDashoffset, 0],
-  easing: 'easeInOutSine',
-  duration: 2500,
-  delay: function(el, i) { return i * 250 },
-  direction: 'alternate',
-  loop: true
-});
-  function play() {
-    paradox.play();
-  }
-  function pause() {
-    paradox.pause();
-  }
-  isElementInViewport(target, play, pause);
-};*/
+var textWrapper = document.querySelector('.canva__text');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.canva__text .letter',
+    opacity: [0,1],
+    easing: "easeInOutQuad",
+    duration: 2250,
+    delay: (el, i) => 150 * (i+1)
+  }).add({
+    targets: '.ml3',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 6000
+  });
 
 
 
@@ -653,7 +603,6 @@ function offset(el) {
 function initCode() {
   animationBraille();//Запуск анимации кружков
   scrollElem();// Скролл текста
-  animMouse();// Движение за мышью
   init();// запуск анимации Canvas
   const tv = new Tvpresentatin(content);// Запуск кода управлением "TV"
   tv.clickInput();
