@@ -387,23 +387,49 @@ header {
   user-select: none;
 }
 
-.paradox {
-  background-color: rgb(0, 0, 0);
-  z-index: 1;
-}
 
 .motion-path circle {
   fill: var(--main-color-light);
 }
 
 .paradox {
-  position: relative;
-  height: 1000px;
+  background-color: var(--main-color);
+  color: var(--main-color-light);
+  font-size: 1.5rem;
 }
-.line {
-  position: absolute;
-  top:0;
+
+.paradox__container {
+  width: 80%;
+  margin: auto;
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
 }
+.container__glass, .container__reich {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+.paradox__glass, .paradox__reich {
+  max-width: 100%;
+}
+.container__glass p, .container__reich p {
+  text-align: center;
+}
+.container__glass-glass, .container__reich-reich {
+  font-size: 3rem;
+}
+.container__glass-url, .container__reich-url {
+  font-size: 0.7rem;
+  text-decoration: none;
+  color: var(--blue-color);
+  margin: auto;
+}
+.container__reich {
+  margin-left: auto;
+}
+
+
 /*________________________________FOOTER_____________________________________*/
 
 footer {

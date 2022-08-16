@@ -522,7 +522,7 @@ ______________________________________________________________________________*/
 
 
 
-
+/*
 function animParadox() {
 const target = document.querySelector(`.elem .paradox__svg-path`);
 let paradox = anime({
@@ -542,7 +542,7 @@ let paradox = anime({
   }
   isElementInViewport(target, play, pause);
 };
-
+*/
 
 
 
@@ -562,7 +562,7 @@ function bioFix(params) {
    sa();
   function sa3(params) {
     const arrText = document.querySelectorAll(`.header__menu-t`);
-    const target = document.querySelector(`.paradox`);
+    const target = document.querySelector(`.container__glass`);
     fixedPositionTextAmim(arrText[2], target)
   };
   sa3();
@@ -610,7 +610,6 @@ function initCode() {
   scrollElem();// Скролл текста
   animMouse();// Движение за мышью
   init();// запуск анимации Canvas
-  animParadox();
   const tv = new Tvpresentatin(content);// Запуск кода управлением "TV"
   tv.clickInput();
   tv.scrollTv();
