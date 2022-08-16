@@ -409,9 +409,11 @@ header {
   width: 40%;
   display: flex;
   flex-direction: column;
+ 
 }
 .paradox__glass, .paradox__reich {
   max-width: 100%;
+  z-index: 1;
 }
 .container__glass p,
 .container__reich p {
@@ -433,8 +435,9 @@ header {
   margin-left: auto;
 }
 .container__glass-anim {
-  color: #6668ac49;
+  color: #6668ac;
   font-size: 1.5vw;
+  font-weight: 400;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -452,6 +455,13 @@ header {
   position: relative;
   display: flex; 
   margin-left: 5%;
+  margin-bottom: 6%;
+}
+.minimal {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  z-index: 0;
 }
 
 /*________________________________FOOTER_____________________________________*/

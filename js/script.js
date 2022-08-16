@@ -532,7 +532,7 @@ let paradox = anime({
   duration: 2500,
   delay: function(el, i) { return i * 250 },
   direction: 'alternate',
-  loop: false
+  loop: true
 });
   function play() {
     paradox.play();
@@ -541,8 +541,8 @@ let paradox = anime({
     paradox.pause();
   }
   isElementInViewport(target, play, pause);
-};
-*/
+};*/
+
 
 
 
@@ -607,7 +607,7 @@ const test = new Letterize({
           scale: 0.5
         })
         .add({
-          letterSpacing: "10px"
+          letterSpacing: "12px"
         })
         .add({
           scale: 2
@@ -629,7 +629,7 @@ const test = new Letterize({
 
 /*Функция проверки наличия объекта в зоне видимости */
 function isElementInViewport(el, inCB, outCB, rootMargin) {
-  const margin = rootMargin || '-10%';
+  const margin = rootMargin || '-5%';
   function handleIntersect(entries, observer) {
     const entry = entries[0];
     if (entry.isIntersecting) {
@@ -659,4 +659,5 @@ function initCode() {
   tv.clickInput();
   tv.scrollTv();
   bioFix();
+ /* animParadox();*/
 };
