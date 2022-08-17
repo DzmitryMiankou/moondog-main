@@ -245,7 +245,7 @@ ________________________________________________________________________________
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 
-const h = canvas.height = 900;
+const h = canvas.height = 1000;
 const w = canvas.width = innerWidth;
 
 const particles = [];
