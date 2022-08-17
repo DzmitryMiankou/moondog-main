@@ -448,16 +448,13 @@ function scrollToElement(el, offset) {
   const off = offset || 0;
   const rect = el.getBoundingClientRect();
   const top = rect.top + off;
-  const animation = anime({
+  anime({
     targets: [document.body, document.documentElement],
     scrollTop: top,
     easing: 'easeInOutSine',
     duration: 0
   });
 };
-
-
-const scrollToGettingheadermusic = document.querySelector('#header__music');
 window.addEventListener('load', function(e) {
   e.preventDefault();
   scrollToElement(document.querySelector('#logoscrol'));
@@ -474,11 +471,11 @@ ___________________________________________________________________
 ______________________________________________________________________________*/
 
 
-
-var textWrapper = document.querySelector('.canva__text');
+function canvaTextAnim() {
+  const textWrapper = document.querySelector('.canva__text');
 textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-anime.timeline({loop: true})
+let an = anime.timeline({loop: false})
   .add({
     targets: '.canva__text .letter',
     opacity: [0,1],
@@ -492,7 +489,10 @@ anime.timeline({loop: true})
     easing: "easeOutExpo",
     delay: 6000
   });
+  animPlayPause(textWrapper, an)
+}
 
+canvaTextAnim();
 
 
 
@@ -531,13 +531,6 @@ function fixedPositionTextAmim(arr, target) {
 };
 
 
-
-
-
-
-
-
-
 import Letterize from "https://cdn.skypack.dev/letterizejs@2.0.0";
 const test = new Letterize({
         targets: ".animate-me"
@@ -573,9 +566,16 @@ const test = new Letterize({
 
 
 
-
-
-
+/*Функция контроля анимации во время видимости на экране*/
+function animPlayPause(target,anim) {
+  function play() {
+    anim.play();
+  }
+  function pause() {
+    anim.pause();
+  }
+  isElementInViewport(target, play, pause);
+}
 
 /*Функция проверки наличия объекта в зоне видимости */
 function isElementInViewport(el, inCB, outCB, rootMargin) {
@@ -591,7 +591,7 @@ function isElementInViewport(el, inCB, outCB, rootMargin) {
   const observer = new IntersectionObserver(handleIntersect, {rootMargin: margin});
   observer.observe(el);
 }
-
+/*Кроссбраузерная функция определения оффсета */
 function offset(el) {
   const rec = el.getBoundingClientRect(),
   scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, //Safari  не  видит scrrollL,T. Эта функциия добавляет кроссбраузерности

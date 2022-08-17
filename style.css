@@ -27,31 +27,15 @@ header {
   grid-template-rows: 3fr 0px;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
-
-.header__logo img {
-  width: 100%;
-  max-height: 100%; 
-  pointer-events: none;
-  user-select: none;
-}
 .header__logo {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.header__logo .logo {
+.header__maintext {
   position: absolute;
   display: flex;
-}
-.header__fixed {
-  display: flex;
-  gap:50%;
-  justify-content:space-around;
-}
-.header__fixed p {
-  color: var(--main-color-light);
-  text-align: center;
 }
 .header__logo p {
   color: var(--main-color-light);
@@ -95,7 +79,6 @@ header {
 .biography__main {
   padding-top: 3%;
 }
-
 .biography__text,
 .biography__text2 {
   font-size: 2rem;
@@ -161,12 +144,10 @@ header {
   color: #6668ac;
   font-size: 7.5rem;
 }
-
 .information__p{
   color: var(--main-color-light);
   font-size: 2rem;
 }
-
 .information__braille {
   color: rgb(92, 92, 92);
   margin-top: 14%;
@@ -178,7 +159,6 @@ header {
   align-items: start;
   gap: 14%;
 }
-
 .information__photo-elem {
   background-color: var(--blue-color);
   border-radius: 50px;
@@ -188,21 +168,17 @@ header {
   pointer-events: none;
   user-select: none;
 }
-
 .svg  {
   transform: scaleY(-1);
   pointer-events: none;
   user-select: none;
 }
-
-
 .reviews__item {
   min-width: 0;
   background: black;
   z-index: 1;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-
 .wrapper {
   position: relative;
 }
@@ -239,13 +215,11 @@ header {
   z-index: 0;
   position: relative;
   height: 60vmax;
-  
 }
 .video__content img {
   width: 800px;
   pointer-events: none;
 }
-
 .video-itam {
   position: absolute;
   top: 5%;
@@ -344,7 +318,6 @@ header {
   top: 0;
   pointer-events: none;
 }
-
 .parallax__container {
   z-index: 4;
 }
@@ -356,7 +329,6 @@ header {
   margin-top: 20%;
   color: var(--main-color-light);
 }
-
 .canva__text {
   font-weight: 900;
   font-size: 4vw;  
@@ -376,7 +348,6 @@ header {
   width: 20%;
   text-align:center ;
 }
-
 .container__yt-linc {
   font-weight: 900;
   color: var(--main-color-light);
@@ -387,7 +358,6 @@ header {
   padding: 1%;
   transition: 1s;
 }
-
 .container__yt-linc:hover {
   background-color:#ff0000;
   color: white;
@@ -398,13 +368,11 @@ header {
 .motion-path circle {
   fill: var(--main-color-light);
 }
-
 .paradox {
   background-color: var(--main-color);
   color: var(--main-color-light);
   font-size: 1.5rem;
 }
-
 .paradox__container {
   width: 80%;
   margin: auto;
@@ -416,7 +384,6 @@ header {
   width: 40%;
   display: flex;
   flex-direction: column;
- 
 }
 .paradox__glass, .paradox__reich {
   max-width: 100%;
@@ -500,36 +467,30 @@ footer .footer__menu {
   align-items: center;
   margin: 0;
 }
-
 footer .footer__menu a {
   color: var(--main-color-light);
 }
-
 .footer__copir,
 .footer__communiti {
   color: var(--main-color-light);
   font-size: 1rem;
 }
-
 .footer__logo {
   max-width: 40px;
   margin-left: auto;
   user-select: none;
 }
-
 .footer__common {
   display: flex;
   align-items: center;
   margin: auto;
   gap: 0.5em;
 }
-
 .footer__logo:hover {
   background-color: rgba(255, 255, 255, 0.384);
   border-radius: 40%;
   transition: 1s;
 }
-
 .footer__logo:active {
   background-color: #6668acc7;
   border-radius: 50%;
@@ -539,13 +500,11 @@ footer .footer__menu a {
 .footer-linc {
   margin-left: auto;
 }
-
 .footer__menu-svg:hover {
   background-color: rgba(255, 255, 255, 0.384);
   border-radius: 40%;
   transition: 1s;
 }
-
 .footer__menu-svg:active {
   background-color: #6668acc7;
   border-radius: 50%;
