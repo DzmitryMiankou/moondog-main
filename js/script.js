@@ -564,8 +564,6 @@ const test = new Letterize({
 
 
 
-
-
 /*Функция контроля анимации во время видимости на экране*/
 function animPlayPause(target,anim) {
   function play() {
@@ -575,7 +573,7 @@ function animPlayPause(target,anim) {
     anim.pause();
   }
   isElementInViewport(target, play, pause);
-}
+  }
 
 /*Функция проверки наличия объекта в зоне видимости */
 function isElementInViewport(el, inCB, outCB, rootMargin) {
