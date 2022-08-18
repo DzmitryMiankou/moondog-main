@@ -6,6 +6,7 @@
   --main-color-light: #dcd4d1; /* Переменная бежевого цвета */
   --logo-color-white: white; /* Переменная белого цвета */
   --blue-color: #6668ac; 
+  overflow-x: hidden;
 }
 *,
 ::before,
@@ -572,14 +573,18 @@ footer .footer__menu a {
   .footer__communiti {
     font-size: 1rem;
   }
+  .information__life {
+    font-size: 5rem;
+  }
 }
 @media (max-width:900px) {
-  .containerp__text p {
-    font-size: 1.2rem;
-  }
-  .container__yt-linc{
-    font-size: 2rem;
-  }
+  .information__photo {
+      width: 300px;
+    }
+  
+    .information__braille {
+      display: none;
+    }
   footer {
       height: 200px;
       background: url("images/footer.backgr.min.svg");
@@ -612,6 +617,12 @@ footer .footer__menu a {
   }
   .video-text h3 {
     font-size: 15vh;
+  }
+  .information__photo {
+    width: 200px;
+  }
+  .information__braille {
+    display: none;
   }
 }
 @media (max-width:550px) {
