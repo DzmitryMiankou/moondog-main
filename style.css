@@ -608,6 +608,9 @@ footer .footer__menu a {
   header {
     height: 200px;
   }
+  .container__glass-anim {
+    display: none;
+  }
 
   .biography__text strong {
     white-space: pre-wrap;

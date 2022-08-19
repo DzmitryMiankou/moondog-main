@@ -473,24 +473,25 @@ ______________________________________________________________________________*/
 
 function canvaTextAnim() {
   const textWrapper = document.querySelector('.canva__text');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+  textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-let an = anime.timeline({loop: false})
-  .add({
-    targets: '.canva__text .letter',
-    opacity: [0,1],
-    easing: "easeInOutQuad",
-    duration: 2250,
-    delay: (el, i) => 150 * (i+1)
-  }).add({
-    targets: '.ml3',
-    opacity: 0,
-    duration: 1000,
-    easing: "easeOutExpo",
-    delay: 6000
-  });
-  animPlayPause(textWrapper, an)
-}
+  let an = anime.timeline({loop: false})
+    .add({
+      targets: '.canva__text .letter',
+      opacity: [0,1],
+      easing: "easeInOutQuad",
+      duration: 2250,
+      delay: (el, i) => 150 * (i+1)
+    })
+    .add({
+      targets: '.ml3',
+      opacity: 0,
+      duration: 1000,
+      easing: "easeOutExpo",
+      delay: 6000
+    });
+  animPlayPause(textWrapper, an);
+};
 
 canvaTextAnim();
 
@@ -533,31 +534,29 @@ function fixedPositionTextAmim(arr, target) {
 
 import Letterize from "https://cdn.skypack.dev/letterizejs@2.0.0";
 const test = new Letterize({
-        targets: ".animate-me"
-      });
-
-      const animation = anime.timeline({
-        targets: test.listAll,
-        delay: anime.stagger(100, {
-          grid: [test.list[0].length, test.list.length],
-          from: "center"
-        }),
-        loop: true
-      });
-
-      animation
-        .add({
-          scale: 0.5
-        })
-        .add({
-          letterSpacing: "12px"
-        })
-        .add({
-          scale: 2
-        })
-        .add({
-          letterSpacing: "6px"
-        });
+  targets: ".animate-me"
+});
+const animation = anime.timeline({
+  targets: test.listAll,
+  delay: anime.stagger(100, {
+    grid: [test.list[0].length, test.list.length],
+    from: "center"
+  }),
+  loop: true
+});
+animation
+.add({
+  scale: 0.5
+})
+.add({
+  letterSpacing: "12px"
+})
+.add({
+  scale: 2
+})
+.add({
+  letterSpacing: "6px"
+});
 
 
 
