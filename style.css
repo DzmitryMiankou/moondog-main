@@ -355,7 +355,7 @@ header {
   text-align: center;
   font-size: 4rem;
   background-color:var(--blue-color);
-  border-radius:50px;
+  border-radius:100px;
   padding: 1%;
   transition: 1s;
 }
