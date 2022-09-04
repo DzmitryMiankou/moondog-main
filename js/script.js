@@ -131,7 +131,7 @@ const addSound = document.querySelector(`#addSound`);
 const next = document.querySelector(`#nextSound`);
 const nextInvert = document.querySelector(`#nextInvert`);
 const bottomObj = document.querySelector(`.video-text`);
-const topObj = document.querySelector(`.information__life`);
+const topObj = document.querySelector(`.motion__audios`);
 
 const content = document.querySelectorAll(`.video-itam`);// Массив медиафайлов
 content.forEach(element => element.style.cssText=`display:none;`);
@@ -196,7 +196,7 @@ class Tvpresentatin {
     }
   }
   scrollStop(bottRect, topRect) {
-    if(bottRect.top < 1 || topRect.top > 0 || this.video.style.display == `none`) {
+    if(bottRect.top < 1 || topRect.top > 200 || this.video.style.display == `none`) {
       this.video.pause();
     }
     else {
